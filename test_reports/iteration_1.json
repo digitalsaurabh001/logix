@@ -1,0 +1,45 @@
+{
+  "summary": "Comprehensive frontend testing of the Logix Finance static NBFC site. All 15 routes load (200) with header/footer. Header nav, mobile menu, footer (5 main + 10 policy links), CTAs to /loan-products, Contact form (submit disabled until consent, success on submit), Policy TOC with scroll-spy, ScrollToTop on route change, placeholders, fonts, and color palette all working. No console/page errors detected on any page.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "PolicyLayout scroll-spy uses a single rectTop<140 threshold; when user scrolls past the LAST section heading rapidly via TOC anchor click, the 'active' computation can briefly lag (observed last TOC item not turning terracotta within 800ms post-click). Not a functional bug but a minor UX polish; consider IntersectionObserver or using the in-view section with rectTop<140 AND rectBottom>0.",
+    "Header/Footer brand block has hard-coded color hex values throughout (e.g., #1A2421, #B85C38). For maintainability these should be wired into Tailwind theme tokens (already exist in design tokens) instead of inline arbitrary-value classes.",
+    "All 15 pages share an identical <title> 'Logix Finance & Investment | Simple, Transparent Lending'. For SEO/accessibility, each route (especially the 10 policy pages) should have a unique <title> via react-helmet-async or a small effect setting document.title.",
+    "Contact form has no client-side validation messages beyond HTML5 required attribute; mobile/email patterns are not enforced. Acceptable for a static placeholder build but worth noting.",
+    "All anchor links in TOC use plain <a href='#id'> which causes the browser to update the URL hash and rely on default jump; this works (smooth-scroll via CSS likely), but consider e.preventDefault + scrollIntoView({behavior:'smooth'}) for consistent UX across browsers."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A (frontend-only)", "frontend": "100%"},
+  "test_credentials": "N/A — no auth",
+  "seed_data_creation": "None",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Site is purely static; Contact form is local-state only (sets sent=true for 4s). Placeholders 'xxxxxxxx' rendered with .ph class (monospace + muted bg) are INTENTIONAL — do not flag as bugs. Frontend URL: https://capital-connect-79.preview.emergentagent.com. All 15 routes verified including /policies/*. Data-testids are present on all interactive elements (nav-*, mobile-nav-*, footer-*, enquiry-*, toc-*, header-apply-btn, mobile-apply-btn, site-header, site-footer, policy-layout, enquiry-form, enquiry-submit, enquiry-success, enquiry-consent, map-placeholder).",
+  "test_results_detail": {
+    "routes_loaded": "15/15 (200 OK, header+footer rendered, no page errors)",
+    "header_nav_desktop": "5/5 nav links route correctly; active state color = rgb(184,92,56) terracotta confirmed",
+    "header_cta": "header-apply-btn -> /loan-products OK",
+    "mobile_menu": "Toggle opens menu (viewport 390); mobile-nav-* links navigate; menu auto-closes on route change (confirmed in re-test)",
+    "footer": "5 main links + 10 policy links present and correct",
+    "ctas_to_loan_products": "8 anchors found on Home pointing to /loan-products",
+    "loan_products_page": "All 4 products (Personal/Business/Consumer/Short-Term) visible with LOAN AMOUNT, TENURE, INTEREST RATE, REPRESENTATIVE APR, PROCESSING FEE, DISBURSAL, ELIGIBILITY, DOCUMENTS sections",
+    "how_it_works": "Page renders; 'Cooling-off', 'KFS', 'Key Fact' callouts all present",
+    "contact_form": "Submit disabled initially=true, disabled before consent=true, enabled after consent=true, success message appears after submit",
+    "policy_toc_scrollspy": "7 TOC links on /policies/fair-practices-code; clicking scrolls page (0->2246px); scroll-spy active class engages on most sections (minor lag for very-last section after rapid anchor click)",
+    "scroll_to_top": "Verified: scrolled from 2009 -> 0 on route change",
+    "placeholders": "39 .ph elements on Home; font-family monospace (ui-monospace, SFMono-Regular, Menlo,...) confirmed",
+    "fonts": "Headings: Cormorant Garamond ✓ | Body: Manrope ✓",
+    "color_palette": "Generic blue audit: 0 elements with generic blue colors detected on Home",
+    "page_errors": "0 page errors / 0 console errors across tested pages"
+  }
+}

@@ -1,51 +1,52 @@
-import { useEffect } from "react";
+import React from "react";
 import "@/App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import axios from "axios";
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
+import SiteLayout from "./components/layout/SiteLayout";
+import ScrollToTop from "./components/common/ScrollToTop";
 
-const Home = () => {
-  const helloWorldApi = async () => {
-    try {
-      const response = await axios.get(`${API}/`);
-      console.log(response.data.message);
-    } catch (e) {
-      console.error(e, `errored out requesting / api`);
-    }
-  };
+import Home from "./pages/Home";
+import About from "./pages/About";
+import LoanProducts from "./pages/LoanProducts";
+import HowItWorks from "./pages/HowItWorks";
+import Contact from "./pages/Contact";
 
-  useEffect(() => {
-    helloWorldApi();
-  }, []);
-
-  return (
-    <div>
-      <header className="App-header">
-        <a
-          className="App-link"
-          href="https://emergent.sh"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img src="https://avatars.githubusercontent.com/in/1201222?s=120&u=2686cf91179bbafbc7a71bfbc43004cf9ae1acea&v=4" />
-        </a>
-        <p className="mt-5">Building something incredible ~!</p>
-      </header>
-    </div>
-  );
-};
+import InterestRatePolicy from "./pages/policies/InterestRatePolicy";
+import RatesFeesCharges from "./pages/policies/RatesFeesCharges";
+import FairPracticesCode from "./pages/policies/FairPracticesCode";
+import GrievanceRedressal from "./pages/policies/GrievanceRedressal";
+import KYCAML from "./pages/policies/KYCAML";
+import PrivacyPolicy from "./pages/policies/PrivacyPolicy";
+import TermsConditions from "./pages/policies/TermsConditions";
+import RefundCancellation from "./pages/policies/RefundCancellation";
+import Disclaimer from "./pages/policies/Disclaimer";
+import RegulatoryDisclosures from "./pages/policies/RegulatoryDisclosures";
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />}>
-            <Route index element={<Home />} />
-          </Route>
-        </Routes>
+        <ScrollToTop />
+        <SiteLayout>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/loan-products" element={<LoanProducts />} />
+            <Route path="/how-it-works" element={<HowItWorks />} />
+            <Route path="/contact" element={<Contact />} />
+
+            <Route path="/policies/interest-rate-policy" element={<InterestRatePolicy />} />
+            <Route path="/policies/rates-fees-charges" element={<RatesFeesCharges />} />
+            <Route path="/policies/fair-practices-code" element={<FairPracticesCode />} />
+            <Route path="/policies/grievance-redressal" element={<GrievanceRedressal />} />
+            <Route path="/policies/kyc-aml-policy" element={<KYCAML />} />
+            <Route path="/policies/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/policies/terms-conditions" element={<TermsConditions />} />
+            <Route path="/policies/refund-cancellation" element={<RefundCancellation />} />
+            <Route path="/policies/disclaimer" element={<Disclaimer />} />
+            <Route path="/policies/regulatory-disclosures" element={<RegulatoryDisclosures />} />
+          </Routes>
+        </SiteLayout>
       </BrowserRouter>
     </div>
   );
