@@ -92,18 +92,20 @@ export default function Header() {
               {n.label}
             </NavLink>
           ))}
-          <a
-            href="/policies/regulatory-disclosures"
+          <NavLink
+            to="/policies/regulatory-disclosures"
             data-testid="nav-disclosures"
+            className={({ isActive }) => (isActive ? "active" : "")}
           >
             Disclosures
-          </a>
-          <a
-            href="/policies/grievance-redressal"
+          </NavLink>
+          <NavLink
+            to="/policies/grievance-redressal"
             data-testid="nav-grievance"
+            className={({ isActive }) => (isActive ? "active" : "")}
           >
             Grievance Redressal
-          </a>
+          </NavLink>
         </div>
       </nav>
 
