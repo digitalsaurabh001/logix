@@ -2,101 +2,196 @@ import React from "react";
 import PolicyLayout from "../../components/common/PolicyLayout";
 import { X } from "../../components/common/Placeholder";
 
-const TOC = [
-  { id: "objective", label: "Objective" },
-  { id: "application", label: "Loan Application & Processing" },
-  { id: "appraisal", label: "Appraisal & Loan Terms" },
-  { id: "disbursement", label: "Disbursement" },
-  { id: "recovery", label: "Recovery of Loans" },
-  { id: "confidentiality", label: "Confidentiality" },
-  { id: "review", label: "Review" },
-];
-
 export default function FairPracticesCode() {
   return (
-    <PolicyLayout
-      title="Fair Practices Code"
-      intro="Our commitment, in writing, to fair, transparent and dignified practices across the lending lifecycle — from application to recovery."
-      toc={TOC}
-    >
-      <section id="objective">
-        <h2>1. Objective</h2>
-        <p>
-          This Fair Practices Code (FPC) has been adopted by Logix Finance and
-          Investment in line with the Reserve Bank of India's guidelines on Fair
-          Practices for NBFCs. The objective is to:
-        </p>
-        <ul>
-          <li>Promote good and fair practices in dealings with customers.</li>
-          <li>Increase transparency so customers have a clear understanding of services.</li>
-          <li>Encourage market forces to achieve higher operating standards through competition.</li>
-          <li>Foster a fair and cordial relationship between customer and lender.</li>
-        </ul>
-      </section>
+    <PolicyLayout title="Fair Practices Code" lastUpdated={<X>DD MMM YYYY</X>}>
+      <h2>Background</h2>
+      <p>
+        This Fair Practices Code (“FPC” or “Code”) has been formulated in accordance
+        with the guidelines issued by the Reserve Bank of India (“RBI”) for
+        Non-Banking Financial Companies (“NBFCs”). The Code reflects the Company's
+        commitment towards transparency, ethical business practices, fair lending
+        principles, and responsible customer service. The purpose of this Code is to
+        provide borrowers and stakeholders with a clear understanding of the practices
+        and procedures followed by the Company while dealing with customers in all
+        aspects of its lending operations. This Code shall apply to all products and
+        services offered by the Company through physical branches, digital platforms,
+        websites, telecommunication channels, or any other mode of interaction.
+      </p>
 
-      <section id="application">
-        <h2>2. Loan Application & Processing</h2>
-        <ul>
-          <li>All communication with borrowers will be in a language understood by the borrower.</li>
-          <li>The loan application form will include necessary information that affects the interest of the borrower, enabling a meaningful comparison with other lenders.</li>
-          <li>The application form indicates the list of documents required to be submitted along with the form.</li>
-          <li>An acknowledgement is provided for all loan applications received, along with the expected timeframe within which a decision will be communicated.</li>
-        </ul>
-      </section>
+      <h2>Objectives of the Fair Practices Code</h2>
+      <p>The key objectives of this Code are to:</p>
+      <ul>
+        <li>Promote fair, transparent, and ethical business practices in all customer dealings</li>
+        <li>Ensure responsible lending and customer-centric service delivery</li>
+        <li>Provide customers with complete and accurate information to facilitate informed decisions</li>
+        <li>Ensure compliance with applicable laws, RBI guidelines, and regulatory requirements</li>
+        <li>Establish an efficient grievance redressal mechanism</li>
+        <li>Promote professionalism, accountability, and fair recovery practices</li>
+      </ul>
 
-      <section id="appraisal">
-        <h2>3. Appraisal & Loan Terms</h2>
-        <ul>
-          <li>Loan applications are appraised based on the Company's credit policy.</li>
-          <li>Sanction letters / Key Fact Statements convey the amount sanctioned, APR, EMI, all charges and the terms and conditions.</li>
-          <li>Borrowers' written acceptance of these terms is recorded on file.</li>
-          <li>A copy of the loan agreement, along with a copy of all enclosures quoted therein, is furnished to the borrower at the time of sanction / disbursement.</li>
-        </ul>
-      </section>
+      <h2>1. Loan Applications and Processing</h2>
+      <p>
+        The Company shall provide applicants with all necessary information relating
+        to loan products and services to enable meaningful comparison and informed
+        decision-making.
+      </p>
+      <h3>Loan Application Forms</h3>
+      <p>Loan application forms shall clearly indicate:</p>
+      <ul>
+        <li>Information required from the borrower</li>
+        <li>Documents to be submitted along with the application</li>
+        <li>Applicable terms, conditions, and charges</li>
+        <li>Processing timelines, wherever applicable</li>
+      </ul>
+      <p>
+        The Company shall acknowledge receipt of all loan applications through
+        appropriate modes. If additional information or documents are required, the
+        borrower shall be informed appropriately. In case a loan application is
+        rejected, the Company may communicate the reason(s) for such rejection,
+        subject to applicable laws and internal policies.
+      </p>
 
-      <section id="disbursement">
-        <h2>4. Disbursement</h2>
-        <ul>
-          <li>Disbursement is made in accordance with the disbursement schedule incorporated in the loan agreement.</li>
-          <li>Any decision to recall / accelerate payment or to seek additional securities is taken in accordance with the loan agreement.</li>
-          <li>The Company releases all securities on repayment of all dues, subject to any legitimate right or lien for any other claim against the borrower.</li>
-        </ul>
-      </section>
+      <h2>2. Loan Appraisal and Terms &amp; Conditions</h2>
+      <p>
+        After evaluating the loan application, the Company shall communicate the
+        sanction decision to the borrower in writing through a sanction letter or
+        similar communication. The sanction communication shall include:
+      </p>
+      <ul>
+        <li>Loan amount sanctioned</li>
+        <li>Rate of interest and method of application</li>
+        <li>Repayment terms and tenure</li>
+        <li>Applicable charges and fees</li>
+        <li>Penal charges, if any</li>
+        <li>Other material terms and conditions</li>
+      </ul>
+      <p>
+        The Company shall provide the borrower with a copy of the executed loan
+        agreement and relevant documents at the time of loan disbursement. All
+        communications shall be made in English or in a language understood by the
+        borrower.
+      </p>
 
-      <section id="recovery">
-        <h2>5. Recovery of Loans</h2>
-        <p>
-          The Company's recovery practices are guided by courtesy, fair treatment and
-          persuasion. Field staff and recovery agents are trained to act in a
-          professional, lawful and humane manner.
-        </p>
-        <ul>
-          <li>Borrowers are contacted ordinarily between <X>08:00 hrs and 19:00 hrs</X>, unless the special circumstances of the borrower's business or occupation require otherwise.</li>
-          <li>Customers' requests to avoid calls at a particular time or place will be honoured, subject to the borrower providing alternate channels.</li>
-          <li>Privacy of the borrower will be respected and recovery practices will not involve persistent or anti-social behaviour.</li>
-          <li>The Company will engage recovery agents only after their due verification and training, and a list of authorised agencies / agents will be made available on request.</li>
-        </ul>
-      </section>
+      <h2>3. Disbursement of Loans and Changes in Terms</h2>
+      <p>
+        The Company shall disburse loans in accordance with the terms and conditions
+        agreed with the borrower. Any change in:
+      </p>
+      <ul>
+        <li>Interest rates</li>
+        <li>Service charges</li>
+        <li>Repayment schedules</li>
+        <li>Prepayment terms</li>
+        <li>Other material conditions</li>
+      </ul>
+      <p>
+        shall be communicated to the borrower in advance and shall apply prospectively.
+        Any decision regarding recall, acceleration, or enforcement of security shall
+        be carried out strictly in accordance with the terms of the loan agreement and
+        applicable law.
+      </p>
 
-      <section id="confidentiality">
-        <h2>6. Confidentiality</h2>
-        <p>
-          All personal information of borrowers will be treated as confidential and
-          shall not be disclosed to any third party, except as required by law or with
-          the borrower's express consent, in accordance with our{" "}
-          <a href="/policies/privacy-policy">Privacy Policy</a>.
-        </p>
-      </section>
+      <h2>4. Interest Rates and Charges</h2>
+      <p>
+        The Company shall adopt appropriate internal policies and procedures for
+        determining interest rates, processing fees, and other charges. Interest rates
+        shall be determined considering factors such as:
+      </p>
+      <ul>
+        <li>Cost of funds</li>
+        <li>Operational expenses</li>
+        <li>Risk profile of the borrower</li>
+        <li>Market conditions</li>
+        <li>Business strategy and regulatory requirements</li>
+      </ul>
+      <p>
+        The rate of interest and approach for risk gradation shall be made available
+        on the Company's website, wherever applicable. All interest rates shall be
+        communicated in annualized terms for transparency and customer understanding.
+      </p>
 
-      <section id="review">
-        <h2>7. Review</h2>
-        <p>
-          This Fair Practices Code is reviewed by the Board of Directors at least once
-          every <X>xx</X> months. Any complaints regarding adherence to this Code may
-          be raised through our{" "}
-          <a href="/policies/grievance-redressal">Grievance Redressal Mechanism</a>.
-        </p>
-      </section>
+      <h2>5. Responsible Lending and Recovery Practices</h2>
+      <p>
+        The Company believes in responsible lending practices and shall assess the
+        repayment capacity of borrowers before extending financial assistance. The
+        Company and its representatives shall:
+      </p>
+      <ul>
+        <li>Treat borrowers with dignity and respect</li>
+        <li>Avoid harassment, intimidation, or coercive recovery methods</li>
+        <li>Refrain from contacting borrowers at inappropriate hours</li>
+        <li>Follow ethical, lawful, and fair recovery practices at all times</li>
+      </ul>
+      <p>
+        Recovery proceedings, if required, shall be conducted strictly in accordance
+        with applicable laws and the terms of the loan agreement.
+      </p>
+
+      <h2>6. Security and Repossession</h2>
+      <p>
+        Where loans are secured, the loan agreement shall contain appropriate
+        provisions relating to repossession or enforcement of security. The
+        repossession process shall include:
+      </p>
+      <ul>
+        <li>Adequate notice to the borrower</li>
+        <li>Circumstances under which notice may be waived</li>
+        <li>Procedure for taking possession of security</li>
+        <li>Opportunity for repayment before sale or auction</li>
+        <li>Transparent process for sale or disposal of security assets</li>
+      </ul>
+      <p>
+        Upon full repayment of all dues, the Company shall release securities subject
+        to any lawful lien, right of set-off, or other legitimate claim.
+      </p>
+
+      <h2>7. Non-Discrimination Policy</h2>
+      <p>
+        The Company shall not discriminate against any borrower on the basis of
+        religion, caste, gender, marital status, or other prohibited grounds while
+        considering loan applications. However, the Company may participate in special
+        schemes or programs designed for specific sections of society in accordance
+        with applicable laws or government initiatives.
+      </p>
+
+      <h2>8. Grievance Redressal Mechanism</h2>
+      <p>
+        The Company has established an efficient Grievance Redressal Mechanism to
+        address customer complaints and concerns in a fair and timely manner.
+        Customers may contact the Company through the prescribed communication
+        channels for resolution of grievances relating to products, services, staff
+        behavior, or operational issues. All grievances shall be reviewed and resolved
+        within a reasonable timeframe.
+      </p>
+
+      <h2>9. Confidentiality</h2>
+      <p>
+        All customer information and data shall be treated as confidential and shall
+        not be disclosed to third parties except:
+      </p>
+      <ul>
+        <li>Where disclosure is required by law</li>
+        <li>Where disclosure is permitted by the borrower</li>
+        <li>Where disclosure is necessary for credit reporting, legal proceedings, audits, or regulatory compliance</li>
+      </ul>
+
+      <h2>10. Force Majeure</h2>
+      <p>
+        The commitments under this Code are applicable under normal operating
+        conditions. The Company shall not be held responsible for delay or inability
+        to perform obligations arising due to circumstances beyond its reasonable
+        control, including natural disasters, technical failures, regulatory
+        restrictions, or other force majeure events.
+      </p>
+
+      <h2>11. Periodic Review</h2>
+      <p>
+        This Fair Practices Code shall be reviewed periodically by the Company's
+        management and Board of Directors to ensure compliance with RBI guidelines,
+        regulatory updates, and evolving business practices. The latest version of
+        the Code shall be made available on the Company's website for public access.
+      </p>
     </PolicyLayout>
   );
 }

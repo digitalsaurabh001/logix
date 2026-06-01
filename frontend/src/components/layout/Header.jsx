@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Link, NavLink, useLocation } from "react-router-dom";
-import { Menu, X as XIcon } from "lucide-react";
+import React from "react";
+import { Link, NavLink } from "react-router-dom";
 
 const NAV = [
   { to: "/", label: "Home" },
@@ -11,111 +10,117 @@ const NAV = [
 ];
 
 export default function Header() {
-  const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const loc = useLocation();
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
-    onScroll();
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  useEffect(() => {
-    setOpen(false);
-  }, [loc.pathname]);
-
   return (
-    <header
-      data-testid="site-header"
-      className={`sticky top-0 z-50 w-full bg-[#F9F8F6]/85 backdrop-blur-md transition-all duration-300 ${
-        scrolled ? "border-b border-[#E5E3DB]" : "border-b border-transparent"
-      }`}
-    >
-      <div className="container-x flex h-20 items-center justify-between">
-        <Link
-          to="/"
-          data-testid="brand-logo-link"
-          className="flex items-center gap-3 group"
-        >
-          <span className="grid place-items-center w-9 h-9 border border-[#1A2421] rounded-sm">
-            <span className="font-display text-lg leading-none text-[#1A2421]">L</span>
-          </span>
-          <span className="flex flex-col leading-none">
-            <span className="font-display text-[19px] tracking-tight text-[#1A2421]">
-              Logix Finance
-            </span>
-            <span className="text-[10px] uppercase tracking-[0.22em] text-[#64746C] mt-1">
-              & Investment
-            </span>
-          </span>
-        </Link>
+    <header data-testid="site-header">
+      {/* Top utility bar */}
+      <div className="gov-top">
+        <div className="gov-container flex items-center justify-between py-1.5">
+          <div data-testid="top-skip">
+            <a href="#main-content" className="mr-3">Skip to main content</a>
+            <a href="#sitemap" className="mr-3">Sitemap</a>
+          </div>
+          <div data-testid="top-tools">
+            <a href="#a-minus" className="mr-2" title="Decrease font size">A-</a>
+            <a href="#a-normal" className="mr-2" title="Normal font size">A</a>
+            <a href="#a-plus" className="mr-3" title="Increase font size">A+</a>
+            <span className="text-gray-500">|</span>
+            <a href="#lang-en" className="mx-2">English</a>
+            <a href="#lang-hi">हिन्दी</a>
+          </div>
+        </div>
+      </div>
 
-        <nav className="hidden lg:flex items-center gap-9">
+      {/* Tricolour strip */}
+      <div className="tricolour" aria-hidden="true">
+        <span className="saffron" />
+        <span className="white" />
+        <span className="green" />
+      </div>
+
+      {/* Brand row */}
+      <div className="gov-brand">
+        <div className="gov-container flex flex-wrap items-center gap-4">
+          {/* Logo block */}
+          <Link to="/" data-testid="brand-logo-link" className="flex items-center gap-3" style={{ textDecoration: "none" }}>
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Emblem_of_India.svg/240px-Emblem_of_India.svg.png"
+              alt="Emblem"
+              width="48"
+              height="58"
+              style={{ display: "block" }}
+            />
+            <div style={{ lineHeight: 1.25 }}>
+              <div style={{ fontSize: 18, fontWeight: "bold", color: "#0B3D91" }}>
+                LOGIX FINANCE & INVESTMENT PRIVATE LIMITED
+              </div>
+              <div style={{ fontSize: 12, color: "#444" }}>
+                Registered as a Non-Banking Financial Company with the Reserve Bank of India
+              </div>
+              <div style={{ fontSize: 11, color: "#666", marginTop: 2 }}>
+                CIN: <span className="ph">xxxxxxxx</span> &nbsp;|&nbsp; RBI Reg. No.: <span className="ph">xxxxxxxx</span>
+              </div>
+            </div>
+          </Link>
+
+          <div className="ml-auto hidden md:flex items-center gap-3">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Flag_of_India.svg/200px-Flag_of_India.svg.png"
+              alt="Flag of India"
+              width="44"
+              height="29"
+              style={{ border: "1px solid #ccc" }}
+            />
+            <div style={{ fontSize: 11, color: "#444", textAlign: "right", lineHeight: 1.3 }}>
+              Serving customers across India<br />
+              under RBI regulatory framework
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Primary navigation */}
+      <nav className="gov-nav" data-testid="primary-nav">
+        <div className="gov-container flex flex-wrap">
           {NAV.map((n) => (
             <NavLink
               key={n.to}
               to={n.to}
               data-testid={`nav-${n.label.toLowerCase().replace(/\s+/g, "-")}`}
-              className={({ isActive }) =>
-                `text-[13px] tracking-wide transition-colors duration-200 ${
-                  isActive
-                    ? "text-[#B85C38]"
-                    : "text-[#1A2421] hover:text-[#B85C38]"
-                }`
-              }
+              className={({ isActive }) => (isActive ? "active" : "")}
               end={n.to === "/"}
             >
               {n.label}
             </NavLink>
           ))}
-        </nav>
-
-        <div className="hidden lg:flex items-center gap-3">
-          <Link to="/loan-products" data-testid="header-apply-btn" className="btn-primary text-xs px-5 py-2.5">
-            Check Eligibility
-          </Link>
+          <a
+            href="/policies/regulatory-disclosures"
+            data-testid="nav-disclosures"
+          >
+            Disclosures
+          </a>
+          <a
+            href="/policies/grievance-redressal"
+            data-testid="nav-grievance"
+          >
+            Grievance Redressal
+          </a>
         </div>
+      </nav>
 
-        <button
-          data-testid="mobile-menu-toggle"
-          onClick={() => setOpen((v) => !v)}
-          className="lg:hidden p-2 -mr-2 text-[#1A2421]"
-          aria-label="Toggle menu"
-        >
-          {open ? <XIcon size={20} /> : <Menu size={20} />}
-        </button>
-      </div>
-
-      {open && (
-        <div data-testid="mobile-menu" className="lg:hidden border-t border-[#E5E3DB] bg-[#F9F8F6]">
-          <div className="container-x py-4 flex flex-col">
-            {NAV.map((n) => (
-              <NavLink
-                key={n.to}
-                to={n.to}
-                data-testid={`mobile-nav-${n.label.toLowerCase().replace(/\s+/g, "-")}`}
-                className={({ isActive }) =>
-                  `py-3 text-sm border-b border-[#E5E3DB]/60 last:border-0 ${
-                    isActive ? "text-[#B85C38]" : "text-[#1A2421]"
-                  }`
-                }
-                end={n.to === "/"}
-              >
-                {n.label}
-              </NavLink>
-            ))}
-            <Link
-              to="/loan-products"
-              data-testid="mobile-apply-btn"
-              className="btn-primary mt-4 justify-center"
-            >
-              Check Eligibility
-            </Link>
+      {/* Marquee notice */}
+      <div className="gov-container py-2">
+        <div className="gov-marquee" data-testid="notice-marquee">
+          <span className="label">NOTICE</span>
+          <div className="scroll">
+            <span>
+              Beware of fraudsters — Logix Finance & Investment Pvt Ltd never asks for any upfront fee, security deposit or OTP. &nbsp; • &nbsp;
+              Customer Care: 879624245 &nbsp; • &nbsp;
+              Grievance Email: grievance@logixfinance&amp;investment.com &nbsp; • &nbsp;
+              For complaints unresolved beyond 30 days, you may approach the RBI Ombudsman at cms.rbi.org.in
+            </span>
           </div>
         </div>
-      )}
+      </div>
     </header>
   );
 }

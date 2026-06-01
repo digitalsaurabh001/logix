@@ -2,124 +2,91 @@ import React from "react";
 import PolicyLayout from "../../components/common/PolicyLayout";
 import { X } from "../../components/common/Placeholder";
 
-const TOC = [
-  { id: "summary", label: "Summary" },
-  { id: "interest", label: "Interest Rates & APR" },
-  { id: "fees", label: "Processing & Documentation Fees" },
-  { id: "penal", label: "Penal & Bounce Charges" },
-  { id: "prepayment", label: "Prepayment & Cancellation" },
-  { id: "taxes", label: "Taxes" },
-  { id: "notes", label: "Notes" },
-];
-
 export default function RatesFeesCharges() {
   return (
-    <PolicyLayout
-      title="Rates, Fees & Charges"
-      intro="A consolidated schedule of all interest rates, fees and charges levied across our loan products. All charges are also disclosed in your Key Fact Statement before loan execution."
-      toc={TOC}
-    >
-      <section id="summary">
-        <h2>1. Summary</h2>
-        <p>
-          This page summarises all charges associated with availing a loan from Logix
-          Finance and Investment. The exact figures applicable to your loan will be
-          disclosed in writing in your Key Fact Statement (KFS) and Most Important
-          Terms & Conditions (MITC) before signing the loan agreement.
-        </p>
-      </section>
+    <PolicyLayout title="Rates, Fees & Charges" lastUpdated={<X>DD MMM YYYY</X>}>
+      <h2>Summary</h2>
+      <p>
+        This page summarises the rates of interest and the schedule of fees and charges
+        levied by Logix Finance &amp; Investment Private Limited across its loan
+        products, as approved by the Board under the Interest Rate Policy. The exact
+        figures applicable to a particular loan are disclosed in the sanction letter
+        and Key Fact Statement (KFS) issued to the borrower before loan execution.
+      </p>
 
-      <section id="interest">
-        <h2>2. Interest Rates & APR</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Product</th>
-              <th>Interest Rate (p.a.)</th>
-              <th>Representative APR</th>
-              <th>Tenure</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>Personal Loan</td><td><X />% – <X />%</td><td><X />%</td><td><X /> months</td></tr>
-            <tr><td>Business Loan</td><td><X />% – <X />%</td><td><X />%</td><td><X /> months</td></tr>
-            <tr><td>Consumer / EMI Finance</td><td><X />% – <X />%</td><td><X />%</td><td><X /> months</td></tr>
-            <tr><td>Short-Term Loan</td><td><X />% – <X />%</td><td><X />%</td><td><X /> months</td></tr>
-          </tbody>
-        </table>
-      </section>
+      <h2>Interest Rates</h2>
+      <table className="gov-table">
+        <thead>
+          <tr>
+            <th>Sl. No.</th>
+            <th>Loan Product</th>
+            <th>Loan Amount</th>
+            <th>Tenure</th>
+            <th>Rate of Interest</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>Pay Day Loan</td><td>₹5,000 – ₹1,00,000</td><td>7 days – 12 months</td><td>0.10% – 1.00% per day</td></tr>
+          <tr><td>2</td><td>Business Loan</td><td>₹5,000 – ₹1,00,000</td><td>Up to 12 months</td><td>8% – 25% per annum</td></tr>
+          <tr><td>3</td><td>Loan Against Property</td><td>₹1,00,000 – ₹25,00,000</td><td>As per agreement</td><td>12% – 15% per annum</td></tr>
+          <tr><td>4</td><td>EMI Loan</td><td>₹25,000 – ₹5,00,000</td><td>Up to 6 months</td><td>24% – 365% per annum</td></tr>
+        </tbody>
+      </table>
 
-      <section id="fees">
-        <h2>3. Processing & Documentation Fees</h2>
-        <table>
-          <thead>
-            <tr><th>Particulars</th><th>Amount / Rate</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Processing fee</td><td>Up to <X />% of sanctioned loan amount + GST</td></tr>
-            <tr><td>Documentation / stamping</td><td>At actuals as per state</td></tr>
-            <tr><td>e-NACH / e-mandate setup</td><td>₹<X /> + GST</td></tr>
-            <tr><td>Loan statement / NOC (after first free)</td><td>₹<X /> + GST</td></tr>
-            <tr><td>Duplicate copy of agreement</td><td>₹<X /> + GST</td></tr>
-          </tbody>
-        </table>
-        <p>
-          Processing fee status — whether refundable, partially refundable or
-          non-refundable in case of cancellation — is detailed on our{" "}
-          <a href="/policies/refund-cancellation">Refund & Cancellation</a> page.
-        </p>
-      </section>
+      <h2>Penal Charges</h2>
+      <table className="gov-table">
+        <tbody>
+          <tr><td style={{ width: "40%" }}><strong>Penal charges on overdue amount</strong></td><td>1.25% per day on outstanding principal</td></tr>
+          <tr><td><strong>Unregistered NACH charges</strong></td><td>Up to ₹500 per instance</td></tr>
+        </tbody>
+      </table>
+      <p>
+        Penal charges are levied for non-compliance of material terms and conditions of
+        the loan agreement and are <strong>not capitalised</strong> to the loan
+        principal. They are not levied as 'penal interest' added to the rate of
+        interest.
+      </p>
 
-      <section id="penal">
-        <h2>4. Penal & Bounce Charges</h2>
-        <table>
-          <thead>
-            <tr><th>Particulars</th><th>Amount / Rate</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Penal charge on overdue EMI</td><td><X />% on overdue amount + GST</td></tr>
-            <tr><td>Bounce / dishonour charges (per instance)</td><td>₹<X /> + GST</td></tr>
-            <tr><td>Legal & collection costs</td><td>At actuals, where applicable</td></tr>
-          </tbody>
-        </table>
-        <p>
-          Penal charges are levied for non-compliance with the material terms of the
-          loan agreement and are not capitalised to the loan principal.
-        </p>
-      </section>
+      <h2>Other Fees and Charges</h2>
+      <p>Besides interest, the following financial charges may apply, subject to product and customer segment:</p>
+      <ul>
+        <li>Processing fees</li>
+        <li>Origination fees</li>
+        <li>Prepayment / foreclosure charges</li>
+        <li>Recovery / collection charges</li>
+        <li>Re-scheduling charges</li>
+        <li>Payment gateway charges</li>
+        <li>Cheque swap charges</li>
+        <li>Security swap charges</li>
+        <li>Statement of account charges</li>
+        <li>Customer care charges</li>
+        <li>Credit assessment charges</li>
+        <li>ECS / Direct Debit / NACH charges</li>
+      </ul>
 
-      <section id="prepayment">
-        <h2>5. Prepayment & Cancellation</h2>
-        <table>
-          <thead>
-            <tr><th>Particulars</th><th>Amount / Rate</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Foreclosure / part-prepayment (Personal Loan)</td><td><X />% on outstanding principal + GST</td></tr>
-            <tr><td>Foreclosure / part-prepayment (Business Loan)</td><td><X />% on outstanding principal + GST</td></tr>
-            <tr><td>Cancellation before disbursal</td><td>Nil</td></tr>
-            <tr><td>Cancellation within cooling-off period</td><td>Nil prepayment penalty · proportionate APR applies</td></tr>
-          </tbody>
-        </table>
-      </section>
+      <h2>Loan Cancellation, Foreclosure &amp; Prepayment</h2>
+      <table className="gov-table">
+        <tbody>
+          <tr><td style={{ width: "40%" }}><strong>Cancellation before disbursal</strong></td><td>Nil</td></tr>
+          <tr><td><strong>Free look / cooling-off period</strong></td><td>3 days from loan disbursement – principal and applicable charges payable; no prepayment penalty</td></tr>
+          <tr><td><strong>Foreclosure</strong></td><td>No foreclosure charges. Interest payable at contracted rate up to date of final repayment</td></tr>
+          <tr><td><strong>Part prepayment</strong></td><td>Strictly not permitted</td></tr>
+        </tbody>
+      </table>
 
-      <section id="taxes">
-        <h2>6. Taxes</h2>
-        <p>
-          All fees and charges mentioned above are exclusive of applicable Goods &
-          Services Tax (GST) and any other levies, which will be charged in addition,
-          as per prevailing rates.
-        </p>
-      </section>
+      <h2>Goods &amp; Services Tax (GST)</h2>
+      <p>
+        All fees and charges are exclusive of applicable Goods &amp; Services Tax (GST)
+        and any other levies, which shall be charged in addition, as per prevailing
+        rates.
+      </p>
 
-      <section id="notes">
-        <h2>7. Notes</h2>
-        <ul>
-          <li>The above schedule is indicative; final charges applicable to your loan will be specified in the KFS.</li>
-          <li>Charges may be revised by the Company from time to time with appropriate communication to borrowers.</li>
-          <li>For any clarification, please write to <X />@<X />.in.</li>
-        </ul>
-      </section>
+      <h2>Notes</h2>
+      <ul>
+        <li>The above schedule is indicative. The actual charges applicable to a particular loan are disclosed in the sanction letter and KFS.</li>
+        <li>The Company may revise the rates and charges from time to time. Any change shall be applied prospectively in accordance with the Interest Rate Policy.</li>
+        <li>For any clarification, please write to <strong>info@logixfinance&amp;investment.com</strong> or call <strong>879624245</strong>.</li>
+      </ul>
     </PolicyLayout>
   );
 }

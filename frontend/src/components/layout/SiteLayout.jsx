@@ -4,7 +4,7 @@ import Footer from "./Footer";
 
 export default function SiteLayout({ children }) {
   return (
-    <div id="top" className="min-h-screen flex flex-col bg-[#F9F8F6]">
+    <div id="top" className="min-h-screen flex flex-col" style={{ background: "#ffffff" }}>
       <Header />
       <div className="flex-1">{children}</div>
       <Footer />

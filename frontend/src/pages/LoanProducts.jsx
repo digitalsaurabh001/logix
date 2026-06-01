@@ -1,220 +1,135 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Briefcase, User, ShoppingBag, Zap, Check } from "lucide-react";
-import { X } from "../components/common/Placeholder";
 
 const PRODUCTS = [
   {
-    icon: User,
-    title: "Personal Loan",
-    purpose: "For weddings, education, travel, medical emergencies or home improvement.",
-    amount: <X />,
-    tenure: <X />,
-    rate: <X />,
-    apr: <X />,
-    fee: <X />,
-    eligibility: [
-      "Indian resident, 21–60 years",
-      "Salaried or self-employed with stable income",
-      "Valid PAN and Aadhaar",
-      "Active bank account",
-    ],
-    docs: ["PAN card", "Aadhaar card", "Latest bank statements", "Latest income proof (salary slip / ITR)", "Address proof"],
+    title: "Pay Day Loan",
+    purpose: "Short-tenure unsecured personal loan to bridge a temporary cash-flow gap until the borrower's next pay cycle.",
+    amount: "₹5,000 to ₹1,00,000",
+    tenure: "7 days to 12 months",
+    rate: "0.10% to 1.00% per day",
+    fee: "As per sanction letter",
+    docs: ["PAN Card", "Aadhaar Card", "Latest bank statements", "Address proof", "Latest income proof"],
+    eligibility: ["Indian resident, 21 years and above", "Steady source of income", "Active bank account", "Valid PAN and Aadhaar"],
   },
   {
-    icon: Briefcase,
     title: "Business Loan",
     purpose: "Working capital and growth funding for self-employed professionals, shopkeepers, traders and small enterprises.",
-    amount: <X />,
-    tenure: <X />,
-    rate: <X />,
-    apr: <X />,
-    fee: <X />,
-    eligibility: [
-      "Business vintage: <X /> months minimum",
-      "Indian resident proprietor / partner / director",
-      "Active current account",
-      "Filed ITR or audited statements",
-    ],
-    docs: ["Business registration / GST", "PAN of entity & promoter", "Latest 12 months bank statements", "ITRs and financials", "Address proof"],
+    amount: "₹5,000 to ₹1,00,000",
+    tenure: "Up to 12 months",
+    rate: "8% to 25% per annum",
+    fee: "As per sanction letter",
+    docs: ["PAN of entity and promoter", "Aadhaar of promoter", "Business registration / GST", "Latest bank statements", "Latest ITR / financials"],
+    eligibility: ["Indian resident proprietor / partner / director", "Active current account", "Business vintage as per credit policy", "Valid KYC documents"],
   },
   {
-    icon: ShoppingBag,
-    title: "Consumer / EMI Finance",
-    purpose: "Spread the cost of appliances, electronics and durables across easy EMIs at the point of purchase.",
-    amount: <X />,
-    tenure: <X />,
-    rate: <X />,
-    apr: <X />,
-    fee: <X />,
-    eligibility: [
-      "Indian resident, 21+",
-      "Valid KYC documents",
-      "Minimum monthly income: ₹<X />",
-      "Active bank account or UPI",
-    ],
-    docs: ["PAN card", "Aadhaar card", "Bank account / UPI", "Address proof"],
+    title: "Loan Against Property (LAP)",
+    purpose: "Secured loan against residential or commercial property for personal or business funding requirements.",
+    amount: "₹1,00,000 to ₹25,00,000",
+    tenure: "As per loan agreement",
+    rate: "12% to 15% per annum",
+    fee: "As per sanction letter",
+    docs: ["PAN and Aadhaar", "Property documents (title deed / sale deed)", "Latest property tax receipt", "Latest bank statements", "Income proof / ITR"],
+    eligibility: ["Indian resident, 21 years and above", "Clear and marketable title to the offered property", "Adequate repayment capacity"],
   },
   {
-    icon: Zap,
-    title: "Short-Term Loan",
-    purpose: "A small, short-tenure loan to bridge a temporary cash-flow gap with clear repayment.",
-    amount: <X />,
-    tenure: <X />,
-    rate: <X />,
-    apr: <X />,
-    fee: <X />,
-    eligibility: [
-      "Indian resident, 21+",
-      "Active bank account",
-      "Valid PAN and Aadhaar",
-      "Steady source of income",
-    ],
-    docs: ["PAN card", "Aadhaar card", "Latest bank statements", "Address proof"],
+    title: "EMI Loan",
+    purpose: "Short-tenure loan repayable in equated monthly instalments for personal financial requirements.",
+    amount: "₹25,000 to ₹5,00,000",
+    tenure: "Up to 6 months",
+    rate: "24% to 365% per annum",
+    fee: "As per sanction letter",
+    docs: ["PAN Card", "Aadhaar Card", "Latest bank statements", "Address proof"],
+    eligibility: ["Indian resident, 21 years and above", "Steady source of income", "Valid KYC documents"],
   },
 ];
 
 export default function LoanProducts() {
   return (
-    <main data-testid="loan-products-page">
-      {/* HERO */}
-      <section className="border-b border-[#E5E3DB]">
-        <div className="container-x pt-16 md:pt-20 pb-16">
-          <div className="overline text-[#B85C38]">Loan products</div>
-          <h1 className="font-display font-light text-5xl sm:text-6xl lg:text-7xl tracking-[-0.025em] leading-[0.98] mt-4 text-[#1A2421] max-w-4xl">
-            Four products. <em className="italic">One standard</em> of clarity.
-          </h1>
-          <p className="mt-8 max-w-2xl text-[15px] md:text-base leading-relaxed text-[#1A2421]/75">
-            All loan products are governed by our Interest Rate Policy, Fair Practices
-            Code and the regulatory framework of the Reserve Bank of India. The Annual
-            Percentage Rate (APR) and all fees are disclosed in the Key Fact Statement
-            before you sign.
+    <main id="main-content" data-testid="loan-products-page">
+      <div className="gov-page-title">
+        <div className="gov-container">
+          <h1>Loan Products</h1>
+          <div className="crumb"><Link to="/">Home</Link> &raquo; <strong>Loan Products</strong></div>
+        </div>
+      </div>
+
+      <div className="gov-container py-5">
+        <div className="gov-box mb-4">
+          <h2 style={{ fontSize: 17, color: "#0B3D91", marginBottom: 8 }}>Summary of Loan Products</h2>
+          <p style={{ fontSize: 13 }}>
+            The Company offers the following loan products in accordance with its
+            Board-approved Interest Rate Policy. The rate of interest applicable to a
+            particular borrower depends on the risk-gradation criteria set out in the{" "}
+            <Link to="/policies/interest-rate-policy">Interest Rate Policy</Link> and is
+            communicated to the borrower in the sanction letter and Key Fact Statement
+            (KFS) before loan execution.
           </p>
+          <table className="gov-table" data-testid="products-summary-table">
+            <thead>
+              <tr>
+                <th>Sl. No.</th>
+                <th>Loan Product</th>
+                <th>Loan Amount</th>
+                <th>Tenure</th>
+                <th>Rate of Interest</th>
+              </tr>
+            </thead>
+            <tbody>
+              {PRODUCTS.map((p, i) => (
+                <tr key={p.title}>
+                  <td>{i + 1}</td>
+                  <td><strong>{p.title}</strong></td>
+                  <td>{p.amount}</td>
+                  <td>{p.tenure}</td>
+                  <td>{p.rate}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
-      </section>
 
-      {/* PRODUCTS */}
-      <section className="container-x py-16 md:py-20 space-y-12">
         {PRODUCTS.map((p, i) => (
-          <article
-            key={p.title}
-            data-testid={`product-${i}`}
-            className="bg-white border border-[#E5E3DB] rounded-sm p-8 md:p-12"
-          >
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
-              {/* Left: Title + purpose */}
-              <div className="lg:col-span-5">
-                <div className="flex items-center gap-3">
-                  <span className="w-11 h-11 grid place-items-center bg-[#F3F1EC] border border-[#E5E3DB] rounded-sm">
-                    <p.icon size={18} className="text-[#B85C38]" />
-                  </span>
-                  <span className="text-[10px] uppercase tracking-[0.22em] text-[#64746C]">
-                    Product 0{i + 1}
-                  </span>
-                </div>
-                <h2 className="font-display font-light text-4xl md:text-5xl mt-6 text-[#1A2421] tracking-tight leading-[1.05]">
-                  {p.title}
-                </h2>
-                <p className="mt-5 text-[15px] text-[#1A2421]/75 leading-relaxed max-w-md">
-                  {p.purpose}
-                </p>
-
-                <Link to="/contact" className="btn-primary mt-8" data-testid={`product-apply-${i}`}>
-                  Check Eligibility <ArrowRight size={14} />
-                </Link>
+          <div className="gov-box mb-4" key={p.title} data-testid={`product-${i}`}>
+            <h2 style={{ fontSize: 17, color: "#0B3D91", marginBottom: 6 }}>{i + 1}. {p.title}</h2>
+            <p style={{ marginBottom: 6 }}><strong>Purpose:</strong> {p.purpose}</p>
+            <table className="gov-table">
+              <tbody>
+                <tr><td style={{ width: "30%" }}><strong>Loan Amount</strong></td><td>{p.amount}</td></tr>
+                <tr><td><strong>Tenure</strong></td><td>{p.tenure}</td></tr>
+                <tr><td><strong>Rate of Interest</strong></td><td>{p.rate}</td></tr>
+                <tr><td><strong>Processing Fee</strong></td><td>{p.fee}</td></tr>
+              </tbody>
+            </table>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <h3 style={{ fontSize: 14, color: "#0B3D91", marginTop: 6 }}>Eligibility</h3>
+                <ul style={{ listStyle: "disc", paddingLeft: 22, fontSize: 13 }}>
+                  {p.eligibility.map((e, idx) => (<li key={idx}>{e}</li>))}
+                </ul>
               </div>
-
-              {/* Right: Specs + Eligibility + Docs */}
-              <div className="lg:col-span-7 lg:border-l lg:border-[#E5E3DB] lg:pl-10">
-                <div className="grid grid-cols-2 gap-x-8 gap-y-6">
-                  {[
-                    ["Loan Amount", <span key="amt">₹{p.amount}</span>],
-                    ["Tenure", <span key="ten">{p.tenure} months</span>],
-                    ["Interest Rate", <span key="rt">{p.rate}% p.a.</span>],
-                    ["Representative APR", <span key="apr">{p.apr}%</span>],
-                    ["Processing Fee", <span key="pf">{p.fee}% + GST</span>],
-                    ["Disbursal", <span key="ds">Within <X>xx</X> hours</span>],
-                  ].map(([k, v]) => (
-                    <div key={k}>
-                      <div className="text-[10px] uppercase tracking-[0.22em] text-[#64746C]">{k}</div>
-                      <div className="mt-1.5 text-[#1A2421] text-[15px]">{v}</div>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="rule my-8" />
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <div>
-                    <div className="overline text-[#B85C38] mb-3">Eligibility</div>
-                    <ul className="space-y-2">
-                      {p.eligibility.map((e, idx) => (
-                        <li key={idx} className="flex items-start gap-2 text-[14px] text-[#1A2421]/85">
-                          <Check size={14} className="text-[#B85C38] mt-1 shrink-0" />
-                          <span>{e}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div>
-                    <div className="overline text-[#B85C38] mb-3">Documents</div>
-                    <ul className="space-y-2">
-                      {p.docs.map((d, idx) => (
-                        <li key={idx} className="flex items-start gap-2 text-[14px] text-[#1A2421]/85">
-                          <Check size={14} className="text-[#B85C38] mt-1 shrink-0" />
-                          <span>{d}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
+              <div>
+                <h3 style={{ fontSize: 14, color: "#0B3D91", marginTop: 6 }}>Documents Required</h3>
+                <ul style={{ listStyle: "disc", paddingLeft: 22, fontSize: 13 }}>
+                  {p.docs.map((d, idx) => (<li key={idx}>{d}</li>))}
+                </ul>
               </div>
             </div>
-          </article>
+            <p style={{ marginTop: 8, fontSize: 12, color: "#555" }}>
+              For applicable fees, charges and penal charges, please refer to the{" "}
+              <Link to="/policies/rates-fees-charges">Rates, Fees &amp; Charges</Link> page and the{" "}
+              <Link to="/policies/interest-rate-policy">Interest Rate Policy</Link>.
+            </p>
+          </div>
         ))}
-      </section>
 
-      {/* DISCLOSURE BAR */}
-      <section className="bg-[#F3F1EC] border-y border-[#E5E3DB]">
-        <div className="container-x py-12">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div>
-              <div className="overline text-[#B85C38] mb-2">Cooling-off period</div>
-              <p className="text-sm text-[#1A2421]/85 leading-relaxed">
-                You may exit the loan within <X>xx</X> days of disbursal by repaying
-                principal and proportionate APR — without any prepayment penalty.
-              </p>
-            </div>
-            <div>
-              <div className="overline text-[#B85C38] mb-2">Key Fact Statement</div>
-              <p className="text-sm text-[#1A2421]/85 leading-relaxed">
-                Every borrower receives a written KFS before execution disclosing the
-                APR, EMI, all fees and rights — in English and a regional language where
-                applicable.
-              </p>
-            </div>
-            <div>
-              <div className="overline text-[#B85C38] mb-2">Responsible lending</div>
-              <p className="text-sm text-[#1A2421]/85 leading-relaxed">
-                Loans are sanctioned based on assessed repayment capacity. Refer to our
-                Interest Rate Policy & Fair Practices Code for details.
-              </p>
-            </div>
-          </div>
-
-          <div className="mt-10 flex flex-wrap gap-4">
-            <Link to="/policies/rates-fees-charges" className="btn-outline">
-              Rates, Fees & Charges
-            </Link>
-            <Link to="/policies/interest-rate-policy" className="btn-outline">
-              Interest Rate Policy
-            </Link>
-            <Link to="/policies/fair-practices-code" className="btn-outline">
-              Fair Practices Code
-            </Link>
-          </div>
+        <div className="gov-notice" data-testid="cooling-off-notice">
+          <strong>Free Look / Cooling-Off Period:</strong> A borrower may exit the loan
+          within <strong>3 days of disbursement</strong> by repaying the principal and
+          applicable charges as set out in the Interest Rate Policy. No prepayment
+          penalty shall be charged during such period.
         </div>
-      </section>
+      </div>
     </main>
   );
 }

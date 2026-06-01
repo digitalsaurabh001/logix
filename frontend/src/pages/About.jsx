@@ -1,193 +1,125 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Compass, HandHeart, ShieldCheck, Target } from "lucide-react";
 import { X } from "../components/common/Placeholder";
-
-const ABOUT_IMG =
-  "https://static.prod-images.emergentagent.com/jobs/6dc6f6ad-591a-49d3-bbd1-f3910b642e2e/images/e08b24ae7987cb29c81e2b675f88a1bb2ea9ada17820bc1fe264f0fc7d62fcd3.png";
-
-const VALUES = [
-  {
-    icon: ShieldCheck,
-    title: "Transparency",
-    body: "Every fee, every charge, every right — disclosed in writing before you sign.",
-  },
-  {
-    icon: HandHeart,
-    title: "Dignity",
-    body: "Courteous communication and dignified recovery practices, always.",
-  },
-  {
-    icon: Target,
-    title: "Suitability",
-    body: "Loans matched to the borrower's actual repayment capacity — not the maximum we can lend.",
-  },
-  {
-    icon: Compass,
-    title: "Accountability",
-    body: "A clear grievance mechanism, with escalation to the RBI Ombudsman if needed.",
-  },
-];
-
-const LEADERS = [
-  { name: <X />, role: "Founder & Director", bio: "Experience: <X /> years" },
-  { name: <X />, role: "Director", bio: "Experience: <X /> years" },
-  { name: <X />, role: "Director", bio: "Experience: <X /> years" },
-];
 
 export default function About() {
   return (
-    <main data-testid="about-page">
-      {/* HERO */}
-      <section className="border-b border-[#E5E3DB]">
-        <div className="container-x pt-16 md:pt-20 pb-16 md:pb-24">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
-            <div className="lg:col-span-7">
-              <div className="overline text-[#B85C38]">About us</div>
-              <h1 className="font-display font-light text-5xl sm:text-6xl lg:text-7xl tracking-[-0.025em] leading-[0.98] text-[#1A2421] mt-4">
-                A finance company,
-                <br />
-                <em className="italic font-light">made for India.</em>
-              </h1>
-              <p className="mt-8 max-w-xl text-[15px] md:text-base leading-relaxed text-[#1A2421]/75">
-                Logix Finance and Investment is a <X>NBFC / lending entity</X> registered
-                with the Reserve Bank of India under <X>CIN xxxxxxxx · RBI Reg xxxxxxxx</X>.
-                We provide responsible credit to individuals, small businesses and
-                households across India.
-              </p>
-            </div>
+    <main id="main-content" data-testid="about-page">
+      <div className="gov-page-title">
+        <div className="gov-container">
+          <h1>About Us</h1>
+          <div className="crumb"><Link to="/">Home</Link> &raquo; <strong>About Us</strong></div>
+        </div>
+      </div>
 
-            <div className="lg:col-span-5">
-              <div className="aspect-[5/6] bg-[#F3F1EC] border border-[#E5E3DB] rounded-sm overflow-hidden">
-                <img src={ABOUT_IMG} alt="Architectural interlocking arches" className="w-full h-full object-cover" />
+      <div className="gov-container py-5">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-5">
+          <aside className="md:col-span-3">
+            <div className="gov-side">
+              <div className="head">About the Company</div>
+              <ul>
+                <li><a href="#profile" className="active">Company Profile</a></li>
+                <li><a href="#vision">Vision &amp; Mission</a></li>
+                <li><a href="#values">Core Values</a></li>
+                <li><a href="#board">Board of Directors</a></li>
+                <li><a href="#identity">Statutory Identity</a></li>
+              </ul>
+            </div>
+          </aside>
+
+          <article className="md:col-span-9">
+            <div className="gov-box">
+              <div className="gov-content">
+                <section id="profile">
+                  <h2>Company Profile</h2>
+                  <p>
+                    <strong>Logix Finance &amp; Investment Private Limited</strong> is a
+                    Non-Banking Financial Company (NBFC) registered with the Reserve Bank of
+                    India. The Company is engaged in providing simple, transparent and
+                    responsible credit to individuals, self-employed professionals,
+                    traders, shopkeepers and small businesses across India.
+                  </p>
+                  <p>
+                    Our lending operations are conducted primarily through digital
+                    platforms in compliance with the Reserve Bank of India's directions
+                    for Non-Banking Financial Companies, including the Master Direction –
+                    Reserve Bank of India (Non-Banking Financial Companies – Responsible
+                    Business Conduct) Directions, 2025.
+                  </p>
+                </section>
+
+                <section id="vision">
+                  <h2>Vision &amp; Mission</h2>
+                  <h3>Vision</h3>
+                  <p>
+                    To make formal credit simple, fair and accessible to every Indian
+                    household and small business, without compromising on compliance,
+                    transparency or customer dignity.
+                  </p>
+                  <h3>Mission</h3>
+                  <ul>
+                    <li>Provide transparent loan terms through written sanction letters and Key Fact Statements.</li>
+                    <li>Adopt responsible lending practices based on assessed repayment capacity.</li>
+                    <li>Maintain ethical, lawful and fair recovery practices in line with the Fair Practices Code.</li>
+                    <li>Ensure complete compliance with RBI directions and the laws applicable to NBFCs.</li>
+                  </ul>
+                </section>
+
+                <section id="values">
+                  <h2>Core Values</h2>
+                  <table className="gov-table">
+                    <tbody>
+                      <tr><td style={{ width: "25%" }}><strong>Transparency</strong></td><td>Clear disclosure of interest rates, processing fees, penal charges and all material terms before loan execution.</td></tr>
+                      <tr><td><strong>Customer Dignity</strong></td><td>Borrowers are treated with respect at every stage, including during recovery proceedings.</td></tr>
+                      <tr><td><strong>Compliance</strong></td><td>Strict adherence to RBI directions, the Fair Practices Code and applicable laws.</td></tr>
+                      <tr><td><strong>Confidentiality</strong></td><td>Customer information is handled in accordance with the Company's Privacy Policy.</td></tr>
+                    </tbody>
+                  </table>
+                </section>
+
+                <section id="board">
+                  <h2>Board of Directors</h2>
+                  <p>
+                    The Company is governed by a Board of Directors which is responsible
+                    for the approval and periodic review of all key policies including the
+                    Fair Practices Code, Interest Rate Policy, KYC &amp; AML Policy and
+                    Grievance Redressal Mechanism.
+                  </p>
+                  <table className="gov-table">
+                    <thead>
+                      <tr><th>Sl. No.</th><th>Name</th><th>Designation</th><th>DIN</th></tr>
+                    </thead>
+                    <tbody>
+                      <tr><td>1</td><td><X /></td><td>Director</td><td><X /></td></tr>
+                      <tr><td>2</td><td><X /></td><td>Director</td><td><X /></td></tr>
+                      <tr><td>3</td><td><X /></td><td>Director</td><td><X /></td></tr>
+                      <tr><td>4</td><td><X /></td><td>Compliance Officer</td><td><X /></td></tr>
+                    </tbody>
+                  </table>
+                </section>
+
+                <section id="identity">
+                  <h2>Statutory Identity</h2>
+                  <table className="gov-table">
+                    <tbody>
+                      <tr><td style={{ width: "35%" }}><strong>Legal Entity Name</strong></td><td>Logix Finance &amp; Investment Private Limited</td></tr>
+                      <tr><td><strong>Corporate Identity Number (CIN)</strong></td><td><X /></td></tr>
+                      <tr><td><strong>RBI Certificate of Registration No.</strong></td><td><X /></td></tr>
+                      <tr><td><strong>Category of Registration</strong></td><td><X>NBFC – Non-Deposit Taking</X></td></tr>
+                      <tr><td><strong>GSTIN</strong></td><td><X /></td></tr>
+                      <tr><td><strong>Registered Office</strong></td><td><X />, <X />, <X /> – <X />, India</td></tr>
+                      <tr><td><strong>Corporate Office</strong></td><td><X />, <X />, <X /> – <X />, India</td></tr>
+                      <tr><td><strong>Statutory Auditor</strong></td><td><X /></td></tr>
+                      <tr><td><strong>Customer Care</strong></td><td>879624245</td></tr>
+                      <tr><td><strong>Email</strong></td><td>info@logixfinance&amp;investment.com</td></tr>
+                    </tbody>
+                  </table>
+                </section>
               </div>
             </div>
-          </div>
+          </article>
         </div>
-      </section>
-
-      {/* VISION / MISSION */}
-      <section className="container-x py-20 md:py-24">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-          <div className="lg:col-span-6 border-l border-[#E5E3DB] pl-8">
-            <div className="overline text-[#B85C38]">Our Vision</div>
-            <h2 className="font-display text-3xl md:text-4xl font-light mt-3 text-[#1A2421] leading-tight">
-              To make credit simple, fair and accessible — without compromising on
-              compliance or dignity.
-            </h2>
-            <p className="mt-5 text-[15px] leading-relaxed text-[#1A2421]/75">
-              We see formal credit as a tool for upward mobility for Indian households
-              and small businesses — and we want our customers to leave each loan
-              cycle better off than they began it.
-            </p>
-          </div>
-          <div className="lg:col-span-6 border-l border-[#E5E3DB] pl-8">
-            <div className="overline text-[#B85C38]">Our Mission</div>
-            <h2 className="font-display text-3xl md:text-4xl font-light mt-3 text-[#1A2421] leading-tight">
-              Responsible lending. Transparent terms. Customer-first service.
-            </h2>
-            <ul className="mt-5 space-y-2 text-[15px] text-[#1A2421]/80">
-              <li>— Disclose every cost in a Key Fact Statement before signing.</li>
-              <li>— Match products to actual repayment capacity.</li>
-              <li>— Resolve grievances within published timelines.</li>
-              <li>— Use customer data only with consent and for the stated purpose.</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      {/* VALUES */}
-      <section className="bg-white border-y border-[#E5E3DB]">
-        <div className="container-x py-20 md:py-24">
-          <div className="overline text-[#B85C38]">Core values</div>
-          <h2 className="font-display font-light text-4xl md:text-5xl tracking-tight mt-3 text-[#1A2421] leading-tight max-w-3xl">
-            Four commitments. Every loan. Every customer.
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-[#E5E3DB] mt-12 border border-[#E5E3DB] rounded-sm overflow-hidden">
-            {VALUES.map((v) => (
-              <div key={v.title} className="bg-white p-8">
-                <v.icon size={20} className="text-[#B85C38]" />
-                <h3 className="font-display text-2xl mt-6 font-medium text-[#1A2421]">{v.title}</h3>
-                <p className="text-sm leading-relaxed text-[#1A2421]/70 mt-3">{v.body}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* LEADERSHIP */}
-      <section className="container-x py-20 md:py-24">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
-          <div className="lg:col-span-7">
-            <div className="overline text-[#B85C38]">Leadership</div>
-            <h2 className="font-display font-light text-4xl md:text-5xl tracking-tight mt-3 text-[#1A2421] leading-tight">
-              The people behind the policy.
-            </h2>
-          </div>
-          <div className="lg:col-span-5 flex items-end">
-            <p className="text-[15px] text-[#1A2421]/75 leading-relaxed">
-              Our Board and senior management bring decades of combined experience in
-              banking, NBFC operations, technology and risk management.
-            </p>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {LEADERS.map((l, i) => (
-            <div key={i} className="card-flat p-8" data-testid={`leader-${i}`}>
-              <div className="aspect-[4/5] bg-[#F3F1EC] border border-[#E5E3DB] rounded-sm grid place-items-center">
-                <span className="font-display text-6xl text-[#1A2421]/30">L</span>
-              </div>
-              <h3 className="font-display text-2xl mt-6 font-medium text-[#1A2421]">{l.name}</h3>
-              <div className="text-xs uppercase tracking-[0.18em] text-[#B85C38] mt-1">{l.role}</div>
-              <p className="text-sm leading-relaxed text-[#1A2421]/70 mt-4">
-                <X>Brief professional background and prior experience to be added here. xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx.</X>
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* COMPANY SNAPSHOT */}
-      <section className="bg-[#1A2421] text-[#F9F8F6]">
-        <div className="container-x py-20 md:py-24">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-            <div className="lg:col-span-5">
-              <div className="overline text-[#B85C38]">Company snapshot</div>
-              <h2 className="font-display font-light text-4xl md:text-5xl mt-3 leading-tight">
-                Identity, registered.
-              </h2>
-              <p className="mt-5 text-[#E5E3DB]/75 text-[15px] leading-relaxed">
-                Verifiable details for partners, regulators and customers.
-              </p>
-            </div>
-            <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-8">
-              {[
-                ["Legal Entity", <X key="le" />],
-                ["CIN", <X key="cin" />],
-                ["RBI Registration", <X key="rbi" />],
-                ["Category", <X key="cat">NBFC / LSP</X>],
-                ["GSTIN", <X key="gst" />],
-                ["Registered Office", <X key="ro" />],
-                ["Corporate Office", <X key="co" />],
-                ["Statutory Auditor", <X key="sa" />],
-              ].map(([k, v]) => (
-                <div key={k} className="pb-5 border-b border-[#E5E3DB]/15">
-                  <div className="text-[10px] uppercase tracking-[0.22em] text-[#E5E3DB]/50">{k}</div>
-                  <div className="mt-2 text-[#F9F8F6]">{v}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="mt-14">
-            <Link to="/policies/regulatory-disclosures" className="inline-flex items-center gap-2 text-[#B85C38] hover:text-[#F9F8F6] transition-colors text-sm">
-              View all regulatory disclosures <ArrowRight size={14} />
-            </Link>
-          </div>
-        </div>
-      </section>
+      </div>
     </main>
   );
 }

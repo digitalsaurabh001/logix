@@ -1,6 +1,6 @@
 import React from "react";
 
-// Reusable placeholder — wraps user-editable text in a distinctly monospaced badge
+// X — placeholder badge for company-specific fields user will edit.
 export const X = ({ children = "xxxxxxxx", as: Tag = "span", className = "" }) => (
   <Tag data-testid="placeholder-x" className={`ph ${className}`}>
     {children}
