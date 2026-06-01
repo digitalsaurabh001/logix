@@ -6,8 +6,8 @@ import {
   TrendingUp, Building2, HeartHandshake, Globe2, ChevronRight,
 } from "lucide-react";
 
-const HERO_IMG = "https://images.unsplash.com/photo-1573497019418-b400bb3ab074?auto=format&fit=crop&w=900&q=70";
-const ABOUT_IMG = "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=900&q=70";
+const HERO_IMG = "https://images.unsplash.com/photo-1637589267610-6c66fc2a086b?auto=format&fit=crop&w=900&q=70";
+const ABOUT_IMG = "https://images.unsplash.com/photo-1577962917302-cd874c4e31d2?auto=format&fit=crop&w=900&q=70";
 
 const HERO_FEATURES = [
   "Fast Approvals — funds within 24 hours",
@@ -104,7 +104,7 @@ export default function Home() {
               <div className="relative">
                 <img
                   src={HERO_IMG}
-                  alt="Indian professional with tablet"
+                  alt="Indian businesswoman professional"
                   className="w-full rounded-xl object-cover"
                   style={{ aspectRatio: "4/5", maxHeight: 540 }}
                 />
@@ -216,7 +216,7 @@ export default function Home() {
             <div className="lg:col-span-6">
               <img
                 src={ABOUT_IMG}
-                alt="Business professionals at office"
+                alt="Indian office team meeting"
                 className="w-full rounded-xl shadow-md"
                 style={{ maxHeight: 460, objectFit: "cover" }}
               />

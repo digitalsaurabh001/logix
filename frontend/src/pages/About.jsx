@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { ShieldCheck, Target, HeartHandshake, Award, ArrowRight, CheckCircle2 } from "lucide-react";
 import { X } from "../components/common/Placeholder";
 
-const ABOUT_IMG = "https://images.unsplash.com/photo-1573497019418-b400bb3ab074?auto=format&fit=crop&w=900&q=70";
+const ABOUT_IMG = "https://images.unsplash.com/photo-1577962917302-cd874c4e31d2?auto=format&fit=crop&w=900&q=70";
 
 const VALUES = [
   { icon: ShieldCheck, t: "Transparency", d: "Clear disclosure of all rates, fees and charges — before you sign." },
@@ -38,7 +38,7 @@ export default function About() {
         <div className="container-x">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             <div className="lg:col-span-6">
-              <img src={ABOUT_IMG} alt="Office team meeting" className="w-full rounded-xl shadow-md"
+              <img src={ABOUT_IMG} alt="Indian office team meeting" className="w-full rounded-xl shadow-md"
                 style={{ maxHeight: 460, objectFit: "cover" }} />
             </div>
             <div className="lg:col-span-6">
