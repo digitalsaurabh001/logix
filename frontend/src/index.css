@@ -3,34 +3,34 @@
 @tailwind utilities;
 
 /* =========================================================
-   Logix Finance & Investment — Government-style basic theme
-   Aesthetic: classic Indian gov / RBI website
-   Fonts: Arial / Verdana / Times New Roman (system stack)
-   Palette: white bg, navy text, blue links, tricolour strip
+   Logix Finance & Investment — Standard NBFC website theme
+   Inspired by GoodSkill / Tycoon Credit / Skyrise Finance
+   Fonts: Poppins (headings) + Open Sans (body)
+   Palette: Deep blue + saffron accent + light grey sections
    ========================================================= */
 
 @layer base {
     :root {
         --background: 0 0% 100%;
-        --foreground: 0 0% 13%;
+        --foreground: 222 18% 18%;
         --card: 0 0% 100%;
-        --card-foreground: 0 0% 13%;
+        --card-foreground: 222 18% 18%;
         --popover: 0 0% 100%;
-        --popover-foreground: 0 0% 13%;
-        --primary: 217 80% 26%;     /* navy #0B3D91 */
+        --popover-foreground: 222 18% 18%;
+        --primary: 218 76% 27%;        /* deep blue #133e8a */
         --primary-foreground: 0 0% 100%;
-        --secondary: 45 25% 96%;
-        --secondary-foreground: 0 0% 13%;
-        --muted: 0 0% 96%;
-        --muted-foreground: 0 0% 35%;
-        --accent: 23 89% 49%;       /* saffron #ED6F12 */
+        --secondary: 210 20% 96%;
+        --secondary-foreground: 222 18% 18%;
+        --muted: 210 20% 96%;
+        --muted-foreground: 220 10% 45%;
+        --accent: 24 94% 50%;           /* saffron #F58220 */
         --accent-foreground: 0 0% 100%;
-        --destructive: 0 65% 45%;
+        --destructive: 0 65% 50%;
         --destructive-foreground: 0 0% 100%;
-        --border: 0 0% 82%;
-        --input: 0 0% 82%;
-        --ring: 217 80% 26%;
-        --radius: 0.125rem;
+        --border: 220 14% 88%;
+        --input: 220 14% 88%;
+        --ring: 218 76% 27%;
+        --radius: 0.5rem;
     }
 }
 
@@ -38,314 +38,213 @@
     * {
         @apply border-border;
     }
-    html {
-        scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
     body {
         background: #ffffff;
-        color: #222222;
-        font-family: Arial, Helvetica, "Liberation Sans", sans-serif;
-        font-size: 14px;
-        line-height: 1.6;
-        -webkit-font-smoothing: auto;
-        -moz-osx-font-smoothing: auto;
+        color: #2b2f3a;
+        font-family: "Open Sans", "Segoe UI", Roboto, Arial, sans-serif;
+        font-size: 15px;
+        line-height: 1.65;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
     }
     h1, h2, h3, h4, h5, h6 {
-        font-family: Arial, Helvetica, sans-serif;
-        font-weight: bold;
-        color: #0B3D91;
-        line-height: 1.3;
+        font-family: "Poppins", "Open Sans", system-ui, sans-serif;
+        color: #133e8a;
+        font-weight: 700;
+        line-height: 1.25;
         margin: 0;
     }
-    h1 { font-size: 22px; }
-    h2 { font-size: 18px; }
-    h3 { font-size: 16px; }
-    h4 { font-size: 14px; }
-    a {
-        color: #1A0DAB;
-        text-decoration: underline;
-    }
-    a:hover {
-        color: #ED6F12;
-        text-decoration: underline;
-    }
-    p { margin: 0 0 10px 0; }
+    a { color: #133e8a; }
+    a:hover { color: #F58220; }
+    p { margin: 0 0 12px 0; }
 }
 
 @layer components {
-    /* Tricolour strip */
-    .tricolour {
-        display: flex;
-        width: 100%;
-        height: 4px;
-    }
-    .tricolour > span { flex: 1 1 0; height: 100%; display: block; }
-    .tricolour .saffron { background: #FF9933; }
-    .tricolour .white { background: #FFFFFF; border-top: 1px solid #d8d8d8; border-bottom: 1px solid #d8d8d8; }
-    .tricolour .green { background: #138808; }
+    /* Layout */
+    .container-x { @apply mx-auto w-full max-w-[1180px] px-5 md:px-7; }
+    .section { @apply py-14 md:py-20; }
+    .section-light { background: #f5f7fa; }
+    .section-dark { background: #0f2855; color: #e8eef9; }
+    .section-dark h1, .section-dark h2, .section-dark h3 { color: #ffffff; }
 
-    /* Container */
-    .gov-container {
-        width: 100%;
-        max-width: 1100px;
-        margin: 0 auto;
-        padding: 0 12px;
+    /* Buttons */
+    .btn {
+        @apply inline-flex items-center gap-2 px-6 py-3 rounded-md text-sm font-semibold transition-all duration-200 no-underline;
+        font-family: "Poppins", sans-serif;
     }
-
-    /* Top utility bar */
-    .gov-top {
-        background: #f0f0f0;
-        border-bottom: 1px solid #d8d8d8;
-        font-size: 12px;
-        color: #333;
+    .btn-primary {
+        background: #133e8a;
+        color: #ffffff !important;
+        box-shadow: 0 4px 14px -4px rgba(19, 62, 138, 0.45);
     }
-    .gov-top a { color: #1A0DAB; }
-
-    /* Brand row */
-    .gov-brand {
+    .btn-primary:hover {
+        background: #F58220;
+        color: #ffffff !important;
+        box-shadow: 0 6px 18px -4px rgba(245, 130, 32, 0.5);
+        transform: translateY(-1px);
+    }
+    .btn-outline {
+        background: transparent;
+        color: #133e8a !important;
+        border: 2px solid #133e8a;
+    }
+    .btn-outline:hover {
+        background: #133e8a;
+        color: #ffffff !important;
+    }
+    .btn-outline-white {
+        background: transparent;
+        color: #ffffff !important;
+        border: 2px solid #ffffff;
+    }
+    .btn-outline-white:hover {
         background: #ffffff;
-        padding: 14px 0 10px 0;
-        border-bottom: 1px solid #d8d8d8;
+        color: #133e8a !important;
+    }
+    .btn-accent {
+        background: #F58220;
+        color: #ffffff !important;
+    }
+    .btn-accent:hover {
+        background: #d96c0e;
+        color: #ffffff !important;
     }
 
-    /* Primary nav */
-    .gov-nav {
-        background: #0B3D91;
-        border-top: 1px solid #062a66;
-        border-bottom: 3px solid #062a66;
+    /* Cards */
+    .card-soft {
+        @apply bg-white rounded-xl border border-[#e6e9f0] p-6 transition-all duration-200;
+        box-shadow: 0 1px 3px rgba(15, 40, 85, 0.05);
     }
-    .gov-nav a {
-        display: inline-block;
-        color: #ffffff;
-        text-decoration: none;
-        padding: 9px 14px;
-        font-size: 13px;
-        border-right: 1px solid rgba(255,255,255,0.18);
+    .card-soft:hover {
+        box-shadow: 0 10px 30px -8px rgba(19, 62, 138, 0.18);
+        transform: translateY(-3px);
+        border-color: #d9e0ee;
     }
-    .gov-nav a:hover, .gov-nav a.active {
-        background: #ED6F12;
-        color: #ffffff;
-        text-decoration: none;
+    .card-feature {
+        @apply bg-white rounded-xl p-7 border border-[#e6e9f0] transition-all duration-200;
+        box-shadow: 0 1px 3px rgba(15, 40, 85, 0.04);
     }
-
-    /* Page title band */
-    .gov-page-title {
-        background: #f7f7f0;
-        border-bottom: 1px solid #d8d8d8;
-        padding: 14px 0;
-    }
-    .gov-page-title h1 {
-        font-size: 22px;
-        color: #0B3D91;
-        margin: 0;
-    }
-    .gov-page-title .crumb {
-        font-size: 12px;
-        color: #555;
-        margin-top: 4px;
-    }
-    .gov-page-title .crumb a { color: #1A0DAB; }
-
-    /* Sidebar nav links (classic gov style) */
-    .gov-side {
-        background: #f7f7f0;
-        border: 1px solid #d8d8d8;
-    }
-    .gov-side .head {
-        background: #0B3D91;
-        color: #ffffff;
-        font-weight: bold;
-        padding: 7px 10px;
-        font-size: 13px;
-    }
-    .gov-side ul { list-style: none; margin: 0; padding: 0; }
-    .gov-side li { border-bottom: 1px solid #e3e3d8; }
-    .gov-side li:last-child { border-bottom: 0; }
-    .gov-side a {
-        display: block;
-        padding: 7px 10px 7px 22px;
-        font-size: 13px;
-        color: #1A0DAB;
-        text-decoration: none;
-        background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'><polygon points='0,0 8,4 0,8' fill='%23ED6F12'/></svg>") no-repeat 8px 11px;
-    }
-    .gov-side a:hover, .gov-side a.active {
-        background-color: #ffe9d0;
-        color: #0B3D91;
+    .card-feature:hover {
+        box-shadow: 0 12px 28px -10px rgba(19, 62, 138, 0.2);
+        border-color: #cdd6ea;
     }
 
-    /* Plain "old" data tables */
+    /* Icon circle */
+    .icon-circle {
+        @apply inline-flex items-center justify-center rounded-full;
+        width: 64px; height: 64px;
+        background: linear-gradient(135deg, #e9efff 0%, #f7faff 100%);
+        color: #133e8a;
+        border: 1px solid #dbe4f7;
+    }
+    .icon-circle.accent {
+        background: linear-gradient(135deg, #ffe8d3 0%, #fff5ec 100%);
+        color: #F58220;
+        border-color: #f4d3b3;
+    }
+
+    /* Eyebrow tag */
+    .eyebrow {
+        @apply inline-block text-xs font-bold uppercase tracking-[0.18em] text-[#F58220];
+        font-family: "Poppins", sans-serif;
+    }
+
+    /* Section heading */
+    .section-title { @apply text-3xl md:text-4xl font-bold text-[#133e8a] leading-tight; }
+    .section-sub { @apply text-base text-[#5b6479] mt-3 max-w-2xl; }
+
+    /* Stat */
+    .stat-num { @apply text-4xl md:text-5xl font-extrabold text-[#133e8a] leading-none; font-family: "Poppins", sans-serif; }
+    .stat-label { @apply text-xs uppercase tracking-[0.18em] text-[#5b6479] mt-2 font-semibold; }
+
+    /* Form fields */
+    .field-label { @apply block text-sm font-semibold text-[#2b2f3a] mb-1.5; }
+    .field-input {
+        @apply w-full bg-white border border-[#d6dce8] rounded-md px-4 py-2.5 text-[14px] text-[#2b2f3a] transition-colors;
+    }
+    .field-input:focus {
+        outline: none;
+        border-color: #133e8a;
+        box-shadow: 0 0 0 3px rgba(19, 62, 138, 0.12);
+    }
+
+    /* Placeholder marker (subtle, not loud) */
+    .ph {
+        font-family: "Open Sans", sans-serif;
+        background: #fff7e9;
+        border-bottom: 1px dashed #e6b56b;
+        padding: 0 4px;
+        color: #8a5b00;
+        font-size: 0.95em;
+        border-radius: 2px;
+    }
+
+    /* Plain data tables (used inside policy pages) */
     .gov-table {
         width: 100%;
         border-collapse: collapse;
-        font-size: 13px;
-        margin: 10px 0 16px 0;
+        font-size: 14px;
+        margin: 12px 0 18px 0;
     }
     .gov-table th, .gov-table td {
-        border: 1px solid #b8b8b8;
-        padding: 7px 10px;
+        border: 1px solid #e1e6f0;
+        padding: 10px 14px;
         text-align: left;
         vertical-align: top;
     }
     .gov-table th {
-        background: #e8eef7;
-        color: #0B3D91;
-        font-weight: bold;
+        background: #f5f7fa;
+        color: #133e8a;
+        font-weight: 700;
     }
-    .gov-table tr:nth-child(even) td { background: #fafafa; }
+    .gov-table tr:nth-child(even) td { background: #fafbfd; }
 
-    /* Boxes */
-    .gov-box {
-        border: 1px solid #d8d8d8;
-        background: #ffffff;
-        padding: 12px 14px;
-    }
-    .gov-box.heading {
-        background: #0B3D91;
-        color: #ffffff;
-        padding: 6px 10px;
-        font-weight: bold;
-        font-size: 13px;
-    }
-    .gov-notice {
-        background: #fff8e1;
-        border: 1px solid #e0c97f;
-        padding: 8px 10px;
-        font-size: 13px;
-    }
-
-    /* Buttons (basic) */
-    .gov-btn {
-        display: inline-block;
-        background: #0B3D91;
-        color: #ffffff !important;
-        padding: 7px 14px;
-        font-size: 13px;
-        text-decoration: none !important;
-        border: 1px solid #062a66;
-    }
-    .gov-btn:hover {
-        background: #ED6F12;
-        border-color: #c95800;
-    }
-    .gov-btn.outline {
-        background: #ffffff;
-        color: #0B3D91 !important;
-        border-color: #0B3D91;
-    }
-    .gov-btn.outline:hover {
-        background: #ED6F12;
-        color: #ffffff !important;
-        border-color: #c95800;
-    }
-
-    /* Form fields */
-    .gov-input, .gov-select, .gov-textarea {
-        width: 100%;
-        background: #ffffff;
-        border: 1px solid #999;
-        padding: 6px 8px;
-        font-size: 13px;
-        font-family: Arial, Helvetica, sans-serif;
-        color: #222;
-    }
-    .gov-input:focus, .gov-select:focus, .gov-textarea:focus {
-        outline: 1px solid #0B3D91;
-        border-color: #0B3D91;
-    }
-    label.gov-label {
-        display: inline-block;
-        font-size: 13px;
-        margin-bottom: 3px;
-        font-weight: bold;
-        color: #333;
-    }
-    .req { color: #c00; }
-
-    /* Placeholder marker (intentionally distinct) */
-    .ph {
-        font-family: "Courier New", Courier, monospace;
-        background: #fff3d6;
-        border: 1px dashed #c9a64a;
-        padding: 0 4px;
-        color: #6b4f00;
-        font-size: 0.95em;
-    }
-
-    /* Marquee-style notices */
-    .gov-marquee {
-        background: #ffffff;
-        border: 1px solid #d8d8d8;
-        padding: 6px 10px;
-        font-size: 13px;
-        display: flex;
-        gap: 10px;
-        align-items: center;
-        overflow: hidden;
-    }
-    .gov-marquee .label {
-        background: #ED6F12;
-        color: #fff;
-        font-weight: bold;
-        padding: 3px 8px;
-        font-size: 12px;
-        white-space: nowrap;
-    }
-    .gov-marquee .scroll {
-        overflow: hidden;
-        white-space: nowrap;
-        flex: 1;
-    }
-    .gov-marquee .scroll span {
-        display: inline-block;
-        padding-left: 100%;
-        animation: marq 28s linear infinite;
-    }
-    @keyframes marq {
-        0%   { transform: translateX(0); }
-        100% { transform: translateX(-100%); }
-    }
-
-    /* Footer */
-    .gov-footer {
-        background: #0B3D91;
-        color: #e8eef7;
-        font-size: 12px;
-    }
-    .gov-footer a { color: #ffd699; }
-    .gov-footer a:hover { color: #ffffff; }
-
-    /* Lists in policy pages */
+    /* Policy prose (kept className so existing pages render correctly) */
     .gov-content {
-        font-size: 14px;
-        line-height: 1.7;
-        color: #222;
+        font-size: 15px;
+        line-height: 1.75;
+        color: #2b2f3a;
     }
     .gov-content h2 {
-        font-size: 17px;
-        color: #0B3D91;
-        margin: 18px 0 6px 0;
-        padding-bottom: 4px;
-        border-bottom: 1px solid #d8d8d8;
+        font-size: 22px;
+        color: #133e8a;
+        margin: 26px 0 10px 0;
+        padding-bottom: 6px;
+        border-bottom: 2px solid #f0f3f9;
+        font-weight: 700;
     }
     .gov-content h3 {
-        font-size: 14px;
-        color: #0B3D91;
-        margin: 14px 0 4px 0;
+        font-size: 17px;
+        color: #133e8a;
+        margin: 18px 0 6px 0;
+        font-weight: 600;
     }
     .gov-content ul {
         list-style: disc;
         padding-left: 22px;
-        margin: 8px 0 12px 0;
+        margin: 8px 0 14px 0;
     }
     .gov-content ol {
         list-style: decimal;
         padding-left: 22px;
-        margin: 8px 0 12px 0;
+        margin: 8px 0 14px 0;
     }
-    .gov-content li { margin-bottom: 4px; }
-    .gov-content p { margin: 0 0 10px 0; }
-    .gov-content strong { color: #0B3D91; }
+    .gov-content li { margin-bottom: 5px; }
+    .gov-content p { margin: 0 0 12px 0; }
+    .gov-content strong { color: #133e8a; }
+    .gov-content a { color: #133e8a; text-decoration: underline; }
+    .gov-content a:hover { color: #F58220; }
+
+    /* Hero gradient background */
+    .hero-bg {
+        background: linear-gradient(135deg, #0f2855 0%, #133e8a 60%, #1e57c9 100%);
+        color: #ffffff;
+    }
+    .hero-bg h1, .hero-bg h2 { color: #ffffff; }
+
+    /* Mini icon strip (lucide stroke) */
+    .stroke-acc { stroke: #F58220; }
 }
 
 @layer base {

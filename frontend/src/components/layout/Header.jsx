@@ -1,5 +1,6 @@
-import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, NavLink, useLocation } from "react-router-dom";
+import { Menu, X as XIcon, Phone } from "lucide-react";
 
 const NAV = [
   { to: "/", label: "Home" },
@@ -10,119 +11,105 @@ const NAV = [
 ];
 
 export default function Header() {
+  const [open, setOpen] = useState(false);
+  const loc = useLocation();
+  useEffect(() => { setOpen(false); }, [loc.pathname]);
+
   return (
-    <header data-testid="site-header">
-      {/* Top utility bar */}
-      <div className="gov-top">
-        <div className="gov-container flex items-center justify-between py-1.5">
-          <div data-testid="top-skip">
-            <a href="#main-content" className="mr-3">Skip to main content</a>
-            <a href="#sitemap" className="mr-3">Sitemap</a>
+    <header data-testid="site-header" className="sticky top-0 z-50 bg-white border-b border-[#e6e9f0]">
+      {/* Top contact bar */}
+      <div className="hidden md:block bg-[#0f2855] text-white text-xs">
+        <div className="container-x flex items-center justify-between py-2">
+          <div data-testid="top-contact">
+            <Phone size={11} className="inline-block mr-1.5 -mt-0.5" />
+            Customer Care: <strong className="text-[#F58220]">879624245</strong>
+            <span className="mx-3 opacity-40">|</span>
+            Email: info@logixfinance&amp;investment.com
           </div>
-          <div data-testid="top-tools">
-            <a href="#a-minus" className="mr-2" title="Decrease font size">A-</a>
-            <a href="#a-normal" className="mr-2" title="Normal font size">A</a>
-            <a href="#a-plus" className="mr-3" title="Increase font size">A+</a>
-            <span className="text-gray-500">|</span>
-            <a href="#lang-en" className="mx-2">English</a>
-            <a href="#lang-hi">हिन्दी</a>
-          </div>
-        </div>
-      </div>
-
-      {/* Tricolour strip */}
-      <div className="tricolour" aria-hidden="true">
-        <span className="saffron" />
-        <span className="white" />
-        <span className="green" />
-      </div>
-
-      {/* Brand row */}
-      <div className="gov-brand">
-        <div className="gov-container flex flex-wrap items-center gap-4">
-          {/* Logo block */}
-          <Link to="/" data-testid="brand-logo-link" className="flex items-center gap-3" style={{ textDecoration: "none" }}>
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Emblem_of_India.svg/240px-Emblem_of_India.svg.png"
-              alt="Emblem"
-              width="48"
-              height="58"
-              style={{ display: "block" }}
-            />
-            <div style={{ lineHeight: 1.25 }}>
-              <div style={{ fontSize: 18, fontWeight: "bold", color: "#0B3D91" }}>
-                LOGIX FINANCE & INVESTMENT PRIVATE LIMITED
-              </div>
-              <div style={{ fontSize: 12, color: "#444" }}>
-                Registered as a Non-Banking Financial Company with the Reserve Bank of India
-              </div>
-              <div style={{ fontSize: 11, color: "#666", marginTop: 2 }}>
-                CIN: <span className="ph">xxxxxxxx</span> &nbsp;|&nbsp; RBI Reg. No.: <span className="ph">xxxxxxxx</span>
-              </div>
-            </div>
-          </Link>
-
-          <div className="ml-auto hidden md:flex items-center gap-3">
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Flag_of_India.svg/200px-Flag_of_India.svg.png"
-              alt="Flag of India"
-              width="44"
-              height="29"
-              style={{ border: "1px solid #ccc" }}
-            />
-            <div style={{ fontSize: 11, color: "#444", textAlign: "right", lineHeight: 1.3 }}>
-              Serving customers across India<br />
-              under RBI regulatory framework
-            </div>
+          <div data-testid="top-grievance">
+            <Link to="/policies/grievance-redressal" className="text-white hover:text-[#F58220]">Grievance Redressal</Link>
+            <span className="mx-3 opacity-40">|</span>
+            <Link to="/policies/regulatory-disclosures" className="text-white hover:text-[#F58220]">Disclosures</Link>
           </div>
         </div>
       </div>
 
-      {/* Primary navigation */}
-      <nav className="gov-nav" data-testid="primary-nav">
-        <div className="gov-container flex flex-wrap">
+      {/* Main brand row */}
+      <div className="container-x flex items-center justify-between h-[78px]">
+        <Link to="/" className="flex items-center gap-3" data-testid="brand-logo-link" style={{ textDecoration: "none" }}>
+          <span className="inline-flex items-center justify-center w-11 h-11 rounded-lg text-white font-bold text-xl"
+            style={{ background: "linear-gradient(135deg, #133e8a 0%, #1e57c9 100%)", fontFamily: "Poppins" }}>
+            L
+          </span>
+          <div style={{ lineHeight: 1.2 }}>
+            <div style={{ fontFamily: "Poppins", fontWeight: 700, fontSize: 17, color: "#133e8a" }}>
+              Logix Finance &amp; Investment
+            </div>
+            <div style={{ fontSize: 11, color: "#5b6479", fontWeight: 500, letterSpacing: "0.04em" }}>
+              PRIVATE LIMITED · NBFC REGISTERED WITH RBI
+            </div>
+          </div>
+        </Link>
+
+        <nav className="hidden lg:flex items-center gap-1" data-testid="primary-nav">
           {NAV.map((n) => (
             <NavLink
               key={n.to}
               to={n.to}
-              data-testid={`nav-${n.label.toLowerCase().replace(/\s+/g, "-")}`}
-              className={({ isActive }) => (isActive ? "active" : "")}
               end={n.to === "/"}
+              data-testid={`nav-${n.label.toLowerCase().replace(/\s+/g, "-")}`}
+              className={({ isActive }) =>
+                `px-4 py-2 text-sm font-semibold rounded-md transition-colors ${
+                  isActive ? "text-[#F58220]" : "text-[#2b2f3a] hover:text-[#133e8a]"
+                }`
+              }
+              style={{ fontFamily: "Poppins" }}
             >
               {n.label}
             </NavLink>
           ))}
-          <NavLink
-            to="/policies/regulatory-disclosures"
-            data-testid="nav-disclosures"
-            className={({ isActive }) => (isActive ? "active" : "")}
-          >
-            Disclosures
-          </NavLink>
-          <NavLink
-            to="/policies/grievance-redressal"
-            data-testid="nav-grievance"
-            className={({ isActive }) => (isActive ? "active" : "")}
-          >
-            Grievance Redressal
-          </NavLink>
-        </div>
-      </nav>
+        </nav>
 
-      {/* Marquee notice */}
-      <div className="gov-container py-2">
-        <div className="gov-marquee" data-testid="notice-marquee">
-          <span className="label">NOTICE</span>
-          <div className="scroll">
-            <span>
-              Beware of fraudsters — Logix Finance & Investment Pvt Ltd never asks for any upfront fee, security deposit or OTP. &nbsp; • &nbsp;
-              Customer Care: 879624245 &nbsp; • &nbsp;
-              Grievance Email: grievance@logixfinance&amp;investment.com &nbsp; • &nbsp;
-              For complaints unresolved beyond 30 days, you may approach the RBI Ombudsman at cms.rbi.org.in
-            </span>
+        <div className="hidden lg:block">
+          <Link to="/loan-products" data-testid="header-apply-btn" className="btn btn-accent">
+            Apply Now
+          </Link>
+        </div>
+
+        <button
+          onClick={() => setOpen((v) => !v)}
+          className="lg:hidden p-2 -mr-2 text-[#133e8a]"
+          data-testid="mobile-menu-toggle"
+          aria-label="Menu"
+        >
+          {open ? <XIcon size={22} /> : <Menu size={22} />}
+        </button>
+      </div>
+
+      {open && (
+        <div className="lg:hidden border-t border-[#e6e9f0] bg-white" data-testid="mobile-menu">
+          <div className="container-x py-3 flex flex-col">
+            {NAV.map((n) => (
+              <NavLink
+                key={n.to}
+                to={n.to}
+                end={n.to === "/"}
+                data-testid={`mobile-nav-${n.label.toLowerCase().replace(/\s+/g, "-")}`}
+                className={({ isActive }) =>
+                  `py-3 text-sm font-semibold border-b border-[#e6e9f0]/70 last:border-0 ${
+                    isActive ? "text-[#F58220]" : "text-[#2b2f3a]"
+                  }`
+                }
+              >
+                {n.label}
+              </NavLink>
+            ))}
+            <Link to="/loan-products" data-testid="mobile-apply-btn" className="btn btn-accent w-full justify-center mt-3 mb-2">
+              Apply Now
+            </Link>
           </div>
         </div>
-      </div>
+      )}
     </header>
   );
 }

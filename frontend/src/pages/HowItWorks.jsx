@@ -1,89 +1,104 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Smartphone, UserCheck, ShieldCheck, FileText, FileSignature, Wallet, KeyRound, ArrowRight } from "lucide-react";
 
 const STEPS = [
-  { t: "Application", d: "The borrower submits a loan application along with the prescribed documents through the Company's website or digital platform. Loan application forms clearly indicate the information required, documents to be submitted, applicable terms, conditions and charges." },
-  { t: "Acknowledgement", d: "The Company acknowledges the receipt of every loan application. Where additional information or documents are required, the borrower is informed appropriately." },
-  { t: "Identity & KYC Verification", d: "The borrower's identity is verified using Officially Valid Documents (OVDs) such as PAN and Aadhaar, in accordance with the Company's KYC & AML Policy and the Reserve Bank of India's Master Directions on KYC." },
-  { t: "Credit Appraisal", d: "The loan application is appraised based on the Company's credit policy, taking into account the borrower's risk profile, repayment capacity and credit bureau information." },
-  { t: "Sanction Letter & Key Fact Statement (KFS)", d: "If the application is approved, a sanction letter and Key Fact Statement are issued setting out the loan amount, rate of interest, method of application of interest, repayment terms, applicable charges, penal charges, if any, and other material terms and conditions." },
-  { t: "Acceptance & Execution of Loan Agreement", d: "On acceptance of the sanction terms, the loan agreement is executed and a copy of the agreement and relevant documents is furnished to the borrower." },
-  { t: "Disbursement", d: "The loan is disbursed in accordance with the terms agreed with the borrower, directly to the borrower's registered bank account." },
-  { t: "Repayment", d: "The borrower repays the loan in accordance with the agreed repayment schedule. Recovery, if required, is conducted strictly in accordance with applicable laws and the Fair Practices Code." },
+  { icon: Smartphone, t: "Apply Online", d: "Submit your loan application online with basic personal/business details and the amount you need. Application takes only a few minutes." },
+  { icon: UserCheck, t: "Identity & KYC", d: "Verify your identity using PAN and Aadhaar. Where required, we may complete digital or video KYC as per RBI norms." },
+  { icon: ShieldCheck, t: "Credit Assessment", d: "We assess your eligibility, repayment capacity and risk profile using your declared and bureau-reported information." },
+  { icon: FileText, t: "Key Fact Statement", d: "You receive a written KFS — APR, EMI schedule, all fees and your rights including the cooling-off period — before signing." },
+  { icon: FileSignature, t: "Accept & e-Sign", d: "If you are comfortable with the terms, you accept and e-sign the loan agreement. A copy is shared on your registered email." },
+  { icon: Wallet, t: "Loan Disbursal", d: "Funds are transferred directly to your bank account, typically within 24 hours of successful execution." },
+  { icon: KeyRound, t: "Repayment", d: "Repay through scheduled EMIs as per the agreement. Recovery, if required, follows the Fair Practices Code." },
 ];
 
 export default function HowItWorks() {
   return (
     <main id="main-content" data-testid="how-it-works-page">
-      <div className="gov-page-title">
-        <div className="gov-container">
-          <h1>How It Works</h1>
-          <div className="crumb"><Link to="/">Home</Link> &raquo; <strong>How It Works</strong></div>
-        </div>
-      </div>
-
-      <div className="gov-container py-5">
-        <div className="gov-box mb-4">
-          <h2 style={{ fontSize: 17, color: "#0B3D91", marginBottom: 6 }}>The Loan Process — From Application to Repayment</h2>
-          <p style={{ fontSize: 13 }}>
-            The Company's lending operations are conducted in accordance with the
-            Board-approved Fair Practices Code and the Reserve Bank of India's directions
-            for Non-Banking Financial Companies. The principal steps in the loan process
-            are set out below:
+      {/* HERO */}
+      <section className="hero-bg">
+        <div className="container-x py-14 md:py-20">
+          <div className="text-xs uppercase tracking-[0.18em] text-[#F58220] font-semibold mb-3">
+            <Link to="/" className="text-white/80 hover:text-[#F58220]">Home</Link>
+            <span className="mx-2 opacity-50">/</span>How It Works
+          </div>
+          <h1 className="text-3xl md:text-5xl font-bold text-white max-w-3xl" style={{ fontFamily: "Poppins" }}>
+            Simple and Hassle-Free Loan Process
+          </h1>
+          <p className="mt-4 text-[#cfd6e6] max-w-2xl">
+            From application to disbursal — fully digital, fully transparent. Here's
+            how it works.
           </p>
-
-          <table className="gov-table" data-testid="how-it-works-table">
-            <thead>
-              <tr>
-                <th style={{ width: "5%" }}>Step</th>
-                <th style={{ width: "25%" }}>Stage</th>
-                <th>Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              {STEPS.map((s, i) => (
-                <tr key={s.t} data-testid={`step-${i}`}>
-                  <td><strong>{i + 1}.</strong></td>
-                  <td><strong>{s.t}</strong></td>
-                  <td>{s.d}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
         </div>
+      </section>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="gov-box">
-            <h2 style={{ fontSize: 15, color: "#0B3D91", marginBottom: 6 }}>
-              Free Look / Cooling-Off Period
-            </h2>
-            <p style={{ fontSize: 13 }}>
-              In accordance with the Company's Interest Rate Policy, a borrower may exit
-              the loan within <strong>3 days of loan disbursement</strong> by repaying the
-              principal amount and applicable charges. No prepayment penalty shall be
-              charged during the cooling-off period.
-            </p>
-          </div>
-          <div className="gov-box">
-            <h2 style={{ fontSize: 15, color: "#0B3D91", marginBottom: 6 }}>
-              Key Fact Statement (KFS)
-            </h2>
-            <p style={{ fontSize: 13 }}>
-              Every borrower is issued a Key Fact Statement disclosing the loan amount,
-              rate of interest, processing fees, penal charges, repayment schedule and
-              the grievance escalation path, before signing the loan agreement.
-            </p>
+      {/* STEPS */}
+      <section className="section">
+        <div className="container-x">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {STEPS.map((s, i) => (
+              <div key={s.t} data-testid={`step-${i}`} className="card-feature relative">
+                <div className="absolute top-5 right-5 text-5xl font-extrabold text-[#f0f3f9]"
+                  style={{ fontFamily: "Poppins" }}>
+                  {String(i + 1).padStart(2, "0")}
+                </div>
+                <div className="icon-circle">
+                  <s.icon size={28} />
+                </div>
+                <h3 className="text-lg font-bold mt-5 text-[#133e8a]" style={{ fontFamily: "Poppins" }}>{s.t}</h3>
+                <p className="text-sm text-[#5b6479] mt-2 leading-relaxed">{s.d}</p>
+              </div>
+            ))}
           </div>
         </div>
+      </section>
 
-        <div className="gov-notice mt-4">
-          <strong>Recovery practices:</strong> The Company and its representatives treat
-          borrowers with dignity and respect, avoid harassment or coercive recovery
-          methods, refrain from contacting borrowers at inappropriate hours and follow
-          ethical, lawful and fair recovery practices at all times, as set out in the{" "}
-          <Link to="/policies/fair-practices-code">Fair Practices Code</Link>.
+      {/* DUAL CALLOUTS */}
+      <section className="section section-light">
+        <div className="container-x">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="card-feature">
+              <div className="eyebrow">Right to Exit</div>
+              <h3 className="text-xl font-bold mt-3 text-[#133e8a]" style={{ fontFamily: "Poppins" }}>
+                3-Day Free Look / Cooling-Off Period
+              </h3>
+              <p className="text-[#5b6479] mt-3 leading-relaxed">
+                You may exit the loan within 3 days of disbursement by repaying the
+                principal and applicable charges. No prepayment penalty is charged
+                during this period.
+              </p>
+            </div>
+            <div className="card-feature">
+              <div className="eyebrow">Right to Know</div>
+              <h3 className="text-xl font-bold mt-3 text-[#133e8a]" style={{ fontFamily: "Poppins" }}>
+                Written Key Fact Statement
+              </h3>
+              <p className="text-[#5b6479] mt-3 leading-relaxed">
+                APR, EMI schedule, processing fee, penal charges, prepayment terms and
+                grievance escalation — disclosed in writing before you sign.
+              </p>
+            </div>
+          </div>
         </div>
-      </div>
+      </section>
+
+      {/* CTA */}
+      <section className="section">
+        <div className="container-x text-center">
+          <h2 className="section-title">Ready to Apply?</h2>
+          <p className="section-sub mx-auto">
+            Start with a simple eligibility check. No paperwork. No commitment.
+          </p>
+          <div className="mt-6 flex flex-wrap gap-3 justify-center">
+            <Link to="/loan-products" className="btn btn-primary" data-testid="hiw-cta-products">
+              See Loan Products <ArrowRight size={14} />
+            </Link>
+            <Link to="/contact" className="btn btn-outline" data-testid="hiw-cta-contact">
+              Talk to an Expert
+            </Link>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }

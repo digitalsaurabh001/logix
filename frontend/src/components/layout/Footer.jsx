@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import { X } from "../common/Placeholder";
 
 const MAIN = [
   { to: "/", label: "Home" },
@@ -22,96 +24,111 @@ const POLICIES = [
   { to: "/policies/regulatory-disclosures", label: "Regulatory Disclosures" },
 ];
 
-const REG_LINKS = [
-  { href: "https://www.rbi.org.in", label: "Reserve Bank of India (RBI)" },
-  { href: "https://cms.rbi.org.in", label: "RBI Complaint Management System" },
-  { href: "https://sachet.rbi.org.in", label: "RBI Sachet" },
-  { href: "https://www.mca.gov.in", label: "Ministry of Corporate Affairs" },
-  { href: "https://cybercrime.gov.in", label: "Cyber Crime Reporting" },
-];
-
 export default function Footer() {
   return (
-    <footer className="gov-footer mt-10" data-testid="site-footer">
-      {/* Tricolour reverse */}
-      <div className="tricolour" aria-hidden="true">
-        <span className="green" />
-        <span className="white" />
-        <span className="saffron" />
-      </div>
+    <footer data-testid="site-footer" className="bg-[#0f2855] text-[#cfd6e6] mt-20">
+      <div className="container-x py-14">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
+          {/* Brand block */}
+          <div className="md:col-span-4">
+            <div className="flex items-center gap-3">
+              <span className="inline-flex items-center justify-center w-11 h-11 rounded-lg text-white font-bold text-xl"
+                style={{ background: "linear-gradient(135deg, #1e57c9 0%, #F58220 100%)", fontFamily: "Poppins" }}>
+                L
+              </span>
+              <div className="leading-tight">
+                <div style={{ fontFamily: "Poppins", fontWeight: 700, fontSize: 16, color: "#fff" }}>
+                  Logix Finance &amp; Investment
+                </div>
+                <div style={{ fontSize: 11, color: "#9aa6c2", letterSpacing: "0.06em" }}>PRIVATE LIMITED</div>
+              </div>
+            </div>
+            <p className="mt-5 text-sm leading-relaxed text-[#a8b3cc] max-w-sm">
+              A Non-Banking Financial Company (NBFC) registered with the Reserve Bank of
+              India. Offering simple, transparent and responsible credit across India.
+            </p>
 
-      <div className="gov-container py-7">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-          <div>
-            <h3 style={{ color: "#fff", fontSize: 13, marginBottom: 8 }}>QUICK LINKS</h3>
-            <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+            <ul className="mt-6 space-y-3 text-[13px] text-[#cfd6e6]">
+              <li className="flex items-start gap-3">
+                <MapPin size={15} className="mt-0.5 text-[#F58220] shrink-0" />
+                <span><X /> Road, <X />, <X /> – <X />, India</span>
+              </li>
+              <li className="flex items-center gap-3">
+                <Phone size={15} className="text-[#F58220]" />
+                <span>879624245</span>
+              </li>
+              <li className="flex items-center gap-3">
+                <Mail size={15} className="text-[#F58220]" />
+                <span>info@logixfinance&amp;investment.com</span>
+              </li>
+              <li className="flex items-center gap-3">
+                <Clock size={15} className="text-[#F58220]" />
+                <span>10:30 AM – 6:30 PM (Mon – Sat)</span>
+              </li>
+            </ul>
+          </div>
+
+          {/* Quick links */}
+          <div className="md:col-span-2">
+            <h3 className="text-white text-sm font-semibold tracking-wide mb-4" style={{ fontFamily: "Poppins" }}>QUICK LINKS</h3>
+            <ul className="space-y-2.5">
               {MAIN.map((m) => (
-                <li key={m.to} style={{ marginBottom: 4 }}>
-                  <Link to={m.to} data-testid={`footer-${m.label.toLowerCase().replace(/\s+/g, "-")}`}>
-                    » {m.label}
+                <li key={m.to}>
+                  <Link
+                    to={m.to}
+                    data-testid={`footer-${m.label.toLowerCase().replace(/\s+/g, "-")}`}
+                    className="text-[13px] text-[#a8b3cc] hover:text-[#F58220] no-underline"
+                  >
+                    {m.label}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
-          <div>
-            <h3 style={{ color: "#fff", fontSize: 13, marginBottom: 8 }}>POLICIES</h3>
-            <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+
+          {/* Policies col 1 */}
+          <div className="md:col-span-3">
+            <h3 className="text-white text-sm font-semibold tracking-wide mb-4" style={{ fontFamily: "Poppins" }}>POLICIES</h3>
+            <ul className="space-y-2.5">
               {POLICIES.slice(0, 5).map((p) => (
-                <li key={p.to} style={{ marginBottom: 4 }}>
-                  <Link to={p.to}>» {p.label}</Link>
+                <li key={p.to}>
+                  <Link to={p.to} data-testid={`footer-policy-${p.to.split("/").pop()}`}
+                    className="text-[13px] text-[#a8b3cc] hover:text-[#F58220] no-underline">
+                    {p.label}
+                  </Link>
                 </li>
               ))}
             </ul>
           </div>
-          <div>
-            <h3 style={{ color: "#fff", fontSize: 13, marginBottom: 8 }}>LEGAL</h3>
-            <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+
+          {/* Policies col 2 */}
+          <div className="md:col-span-3">
+            <h3 className="text-white text-sm font-semibold tracking-wide mb-4" style={{ fontFamily: "Poppins" }}>LEGAL</h3>
+            <ul className="space-y-2.5">
               {POLICIES.slice(5).map((p) => (
-                <li key={p.to} style={{ marginBottom: 4 }}>
-                  <Link to={p.to}>» {p.label}</Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h3 style={{ color: "#fff", fontSize: 13, marginBottom: 8 }}>REGULATOR LINKS</h3>
-            <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
-              {REG_LINKS.map((l) => (
-                <li key={l.href} style={{ marginBottom: 4 }}>
-                  <a href={l.href} target="_blank" rel="noreferrer">» {l.label}</a>
+                <li key={p.to}>
+                  <Link to={p.to} data-testid={`footer-policy-${p.to.split("/").pop()}`}
+                    className="text-[13px] text-[#a8b3cc] hover:text-[#F58220] no-underline">
+                    {p.label}
+                  </Link>
                 </li>
               ))}
             </ul>
           </div>
         </div>
 
-        <hr style={{ borderColor: "rgba(255,255,255,0.2)", margin: "20px 0 14px 0" }} />
+        <hr className="my-8 border-white/10" />
 
-        <div className="md:flex md:items-start md:justify-between" style={{ fontSize: 12 }}>
-          <div style={{ lineHeight: 1.7 }}>
-            <strong style={{ color: "#fff" }}>Registered Office:</strong>{" "}
-            <span className="ph">xxxxxxxx</span>, <span className="ph">xxxxxxxx</span>, <span className="ph">xxxxxxxx</span> – <span className="ph">xxxxxxxx</span>, India<br />
-            <strong style={{ color: "#fff" }}>Customer Care:</strong> 879624245 &nbsp;|&nbsp;
-            <strong style={{ color: "#fff" }}>Email:</strong> info@logixfinance&amp;investment.com<br />
-            <strong style={{ color: "#fff" }}>Grievance:</strong> grievance@logixfinance&amp;investment.com &nbsp;|&nbsp; 10:30 AM – 6:30 PM
-          </div>
-          <div className="mt-4 md:mt-0 md:text-right" style={{ lineHeight: 1.7 }}>
-            <div>CIN: <span className="ph">xxxxxxxx</span></div>
-            <div>RBI Reg. No.: <span className="ph">xxxxxxxx</span></div>
-            <div>GSTIN: <span className="ph">xxxxxxxx</span></div>
-          </div>
-        </div>
-
-        <hr style={{ borderColor: "rgba(255,255,255,0.2)", margin: "14px 0" }} />
-
-        <div className="md:flex md:items-center md:justify-between" style={{ fontSize: 11, color: "#cdd6e8" }}>
+        <div className="md:flex md:items-center md:justify-between gap-6 text-xs text-[#9aa6c2]">
           <div>
-            © <span className="ph">20xx</span> Logix Finance &amp; Investment Private Limited. All rights reserved.
+            <strong className="text-white">CIN:</strong> <X />
+            <span className="mx-3 opacity-50">|</span>
+            <strong className="text-white">RBI Reg. No.:</strong> <X />
+            <span className="mx-3 opacity-50">|</span>
+            <strong className="text-white">GSTIN:</strong> <X />
           </div>
-          <div className="mt-2 md:mt-0">
-            Last Updated: <span className="ph">DD MMM YYYY</span> &nbsp;|&nbsp;
-            Best viewed in Chrome / Firefox / Edge at 1024×768 resolution
+          <div className="mt-3 md:mt-0">
+            © <X>20xx</X> Logix Finance &amp; Investment Pvt Ltd. All rights reserved.
           </div>
         </div>
       </div>
