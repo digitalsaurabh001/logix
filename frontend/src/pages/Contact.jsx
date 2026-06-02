@@ -17,12 +17,32 @@ export default function Contact() {
   const [form, setForm] = useState({
     name: "", mobile: "", email: "", city: "", subject: SUBJECTS[0], message: "", consent: false,
   });
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState({ state: "idle", message: "" });
 
-  const submit = (e) => {
+  const submit = async (e) => {
     e.preventDefault();
-    setSent(true);
-    setTimeout(() => setSent(false), 6000);
+    setStatus({ state: "sending", message: "Sending your enquiry..." });
+    try {
+      const res = await fetch("/contact.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (res.ok && data.ok) {
+        setStatus({ state: "success", message: data.message || "Your enquiry has been received." });
+        setForm({ name: "", mobile: "", email: "", city: "", subject: SUBJECTS[0], message: "", consent: false });
+      } else {
+        const err = data.error || (data.errors && data.errors.join(" ")) || "We could not send your enquiry. Please call 879624245 or email us directly.";
+        setStatus({ state: "error", message: err });
+      }
+    } catch (err) {
+      setStatus({
+        state: "error",
+        message: "Network error — please call 879624245 or email info@logixfinance&investment.com.",
+      });
+    }
+    setTimeout(() => setStatus((s) => (s.state === "success" ? { state: "idle", message: "" } : s)), 8000);
   };
 
   return (
@@ -170,15 +190,22 @@ export default function Contact() {
                       <Link to="/policies/terms-conditions">Terms &amp; Conditions</Link>.
                     </span>
                   </label>
-                  <button type="submit" data-testid="enquiry-submit" disabled={!form.consent}
+                  <button type="submit" data-testid="enquiry-submit"
+                    disabled={!form.consent || status.state === "sending"}
                     className="btn btn-primary disabled:opacity-50 disabled:cursor-not-allowed">
-                    Submit Enquiry <Send size={14} />
+                    {status.state === "sending" ? "Sending..." : (<>Submit Enquiry <Send size={14} /></>)}
                   </button>
 
-                  {sent && (
+                  {status.state === "success" && (
                     <div className="card-soft" style={{ background: "#e7f7ed", borderColor: "#bfe5cc" }} data-testid="enquiry-success">
                       <strong className="text-[#1f7a3a]">Thank you!</strong>{" "}
-                      <span className="text-sm text-[#2b2f3a]">Your enquiry has been received. Our team will get in touch.</span>
+                      <span className="text-sm text-[#2b2f3a]">{status.message}</span>
+                    </div>
+                  )}
+                  {status.state === "error" && (
+                    <div className="card-soft" style={{ background: "#fdecea", borderColor: "#f5c2c0" }} data-testid="enquiry-error">
+                      <strong className="text-[#b00020]">Could not send.</strong>{" "}
+                      <span className="text-sm text-[#2b2f3a]">{status.message}</span>
                     </div>
                   )}
                 </form>
